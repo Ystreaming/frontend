@@ -1,0 +1,33 @@
+# Dépendances
+/node_modules
+
+# Fichiers de build
+/dist
+/tmp
+/out-tsc
+
+# Fichiers d'environnement
+.env
+
+# Fichiers IDE - Visual Studio Code
+.vscode
+*.code-workspace
+
+# Fichiers IDE - JetBrains IDEs (WebStorm, IntelliJ, etc.)
+.idea
+
+# Fichiers IDE - Eclipse
+.classpath
+.project
+.settings/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers de logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.angular
