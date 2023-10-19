@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
-  imagePath = 'assets/moi.jpeg';  // Chemin relatif vers votre image locale
-  imageAltText = 'image profil';  // Texte alternatif pour votre image
+  imagePath = 'assets/moi.jpeg';
+  imageAltText = 'image profil';
 }
