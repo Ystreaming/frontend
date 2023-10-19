@@ -4,11 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ListSubscriptionComponent } from './list-subscription/list-subscription.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { HomeVideosComponent } from './home-videos/home-videos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    ListSubscriptionComponent,
+    HomePageComponent,
+    HomeVideosComponent
   ],
   imports: [
     BrowserModule,

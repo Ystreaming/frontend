@@ -1,0 +1,20 @@
+<section class="wrapper list-subscription">
+    <h3 class="h3">
+        Liste des abonnements
+    </h3>
+    <ul>
+        <li *ngFor="let item of totalItems | slice:0:displayedItemsCount">
+            <img [src]="imagePath" [alt]="imageAltText" class="imageProfilNavBar">
+            <p class="streamerName">Nightwing3140</p>
+            <p class="numberViewer">30k</p>
+        </li>
+    </ul>
+    <div class="containerButton">
+        <button class="button" (click)="showMore()">
+            Afficher plus
+        </button>
+        <button class="button" *ngIf="displayedItemsCount > 8" (click)="showLess()">
+            Afficher moins
+        </button>
+    </div>
+</section>
