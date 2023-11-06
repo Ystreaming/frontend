@@ -7,6 +7,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ListSubscriptionComponent } from './list-subscription/list-subscription.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HomeVideosComponent } from './home-videos/home-videos.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,12 @@ import { HomeVideosComponent } from './home-videos/home-videos.component';
     NavBarComponent,
     ListSubscriptionComponent,
     HomePageComponent,
-    HomeVideosComponent
+    HomeVideosComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

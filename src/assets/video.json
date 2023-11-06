@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "miniatureVideo": "assets/miniatureVideo3.png",
+    "imageProfilDescription": "assets/moi.jpeg",
+    "videoName": "Epic Gaming Montage",
+    "streamerName": "GamerPro123",
+    "category": "Gaming",
+    "description": "A montage of epic gaming moments from my recent streams.",
+    "views": 15000,
+    "uploadDate": "2023-11-01",
+    "comments": [
+      {
+        "username": "Commenter1",
+        "comment": "This was an amazing video!",
+        "date": "2023-11-02"
+      },
+      {
+        "username": "Commenter2",
+        "comment": "Can't wait for the next montage!",
+        "date": "2023-11-03"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "miniatureVideo": "assets/miniatureVideo.jpeg",
+    "imageProfilDescription": "assets/moi.jpeg",
+    "videoName": "Chill IRL Stream Highlights",
+    "streamerName": "LiveLifeLoud",
+    "category": "IRL",
+    "description": "Some highlights from my IRL streams this past month.",
+    "views": 8500,
+    "uploadDate": "2023-10-15",
+    "comments": [
+      {
+        "username": "ChillFan",
+        "comment": "Really enjoyed the laid-back vibes of this!",
+        "date": "2023-10-16"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "miniatureVideo": "assets/miniatureVideo2.jpeg",
+    "imageProfilDescription": "assets/moi.jpeg",
+    "videoName": "Tech Podcast Ep. 5 - The Future of AI",
+    "streamerName": "TechTalker",
+    "category": "Podcast",
+    "description": "In this episode, we discuss the potential impacts of AI on society.",
+    "views": 3000,
+    "uploadDate": "2023-09-30",
+    "comments": [
+      {
+        "username": "AIEnthusiast",
+        "comment": "Great insights on where AI is heading!",
+        "date": "2023-10-01"
+      },
+      {
+        "username": "Skeptic101",
+        "comment": "I'm not sure AI will ever live up to the hype.",
+        "date": "2023-10-02"
+      }
+    ]
+  }
+]

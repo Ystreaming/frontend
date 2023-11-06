@@ -1,19 +1,24 @@
 <section class="container">
     <div>
-        <h3 class="h3">
-            Vidéos de vos chaines préférées
-        </h3>
+        <div class="titleContainer">
+            <h3 class="h3">
+                Vidéos de vos chaînes préférées
+            </h3>
+            <button class="button">
+                Voir plus
+            </button>
+        </div>
         <article class="videoContainer videoWrapper">
             <ng-container *ngFor="let video of videos">
-                <a href="" class="video">
+                <a [routerLink]="['/video', video.id]" class="video">
                     <div class="miniatureWrapper">
-                        <img [src]="miniatureVideo" [alt]="miniatureDescription" class="miniatureVideo">
+                        <img [src]="video.miniatureVideo" [alt]="video.description" class="miniatureVideo">
                     </div>
                     <div class="channel">
-                        <img [src]="imageProfil" [alt]="imageProfilDescription" class="imageProfilChannel">
+                        <img [src]="video.imageProfilDescription" [alt]="video.streamerName" class="imageProfilChannel">
                         <div class="streamer">
-                            <p class="streamerNamePink">Nightwing3140</p>
-                            <p class="catégory">Compilation LoL</p>
+                            <p class="category">{{ video.category }}</p>
+                            <p class="streamerName">{{ video.streamerName }}</p>
                         </div>
                     </div>
                 </a>
@@ -21,20 +26,25 @@
         </article>
     </div>
     <div>
-        <h3 class="h3">
-            Vidéos de vos chaines préférées
-        </h3>
+        <div class="titleContainer">
+            <h3 class="h3">
+                Vidéos les plus vues
+            </h3>
+            <button class="button">
+                Voir plus
+            </button>
+        </div>
         <article class="videoContainer videoWrapper">
             <ng-container *ngFor="let video of videos">
-                <a href="" class="video">
+                <a [routerLink]="['/video', video.id]" class="video">
                     <div class="miniatureWrapper">
-                        <img [src]="miniatureVideo" [alt]="miniatureDescription" class="miniatureVideo">
+                        <img [src]="video.miniatureVideo" [alt]="video.description" class="miniatureVideo">
                     </div>
                     <div class="channel">
-                        <img [src]="imageProfil" [alt]="imageProfilDescription" class="imageProfilChannel">
+                        <img [src]="video.imageProfilDescription" [alt]="video.streamerName" class="imageProfilChannel">
                         <div class="streamer">
-                            <p class="streamerNamePink">Nightwing3140</p>
-                            <p class="catégory">Compilation LoL</p>
+                            <p class="category">{{ video.category }}</p>
+                            <p class="streamerName">{{ video.streamerName }}</p>
                         </div>
                     </div>
                 </a>
@@ -42,24 +52,21 @@
         </article>
     </div>
     <div>
-        <h3 class="h3">
-            Vidéos de vos chaines préférées
-        </h3>
+        <div class="titleContainer">
+            <h3 class="h3">
+                Catégories qui pourraient vous plaire
+            </h3>
+            <button class="button">
+                Voir plus
+            </button>
+        </div>
         <article class="videoContainer videoWrapper">
-            <ng-container *ngFor="let video of videos">
-                <a href="" class="video">
-                    <div class="miniatureWrapper">
-                        <img [src]="miniatureVideo" [alt]="miniatureDescription" class="miniatureVideo">
-                    </div>
-                    <div class="channel">
-                        <img [src]="imageProfil" [alt]="imageProfilDescription" class="imageProfilChannel">
-                        <div class="streamer">
-                            <p class="streamerNamePink">Nightwing3140</p>
-                            <p class="catégory">Compilation LoL</p>
-                        </div>
-                    </div>
-                </a>
-            </ng-container>
+            <a *ngFor="let categorie of miniatureCategorie; let i = index" href="" class="video">
+                <div class="miniatureWrapper" (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">
+                    <img [src]="categorie.image" [alt]="'Image ' + (i + 1)" class="miniatureVideo" [class.blur]="hoveredIndex === i">
+                    <div class="titleOverlay" *ngIf="hoveredIndex === i">{{categorie.titre}}</div>
+                </div>
+            </a>
         </article>
     </div>
 </section>
