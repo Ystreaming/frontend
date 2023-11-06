@@ -1,6 +1,7 @@
 .container {
   display: grid;
   gap: 48px;
+  margin-bottom: 10vh;
 }
 
 .videoWrapper {
@@ -45,6 +46,12 @@
 .channel {
   display: flex;
   gap: 24px;
+}
+
+.category {
+  color: #F4EDDE;
+  padding: 0;
+  margin: 0;
 }
 
 .streamerName {

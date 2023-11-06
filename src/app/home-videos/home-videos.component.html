@@ -10,15 +10,15 @@
         </div>
         <article class="videoContainer videoWrapper">
             <ng-container *ngFor="let video of videos">
-                <a href="" class="video">
+                <a [routerLink]="['/video', video.id]" class="video">
                     <div class="miniatureWrapper">
-                        <img [src]="miniatureVideo" [alt]="miniatureDescription" class="miniatureVideo">
+                        <img [src]="video.miniatureVideo" [alt]="video.description" class="miniatureVideo">
                     </div>
                     <div class="channel">
-                        <img [src]="imageProfil" [alt]="imageProfilDescription" class="imageProfilChannel">
+                        <img [src]="video.imageProfilDescription" [alt]="video.streamerName" class="imageProfilChannel">
                         <div class="streamer">
-                            <p class="catégory">Compilation LoL</p>
-                            <p class="streamerName">Nightwing3140</p>
+                            <p class="category">{{ video.category }}</p>
+                            <p class="streamerName">{{ video.streamerName }}</p>
                         </div>
                     </div>
                 </a>
@@ -36,15 +36,15 @@
         </div>
         <article class="videoContainer videoWrapper">
             <ng-container *ngFor="let video of videos">
-                <a href="" class="video">
+                <a [routerLink]="['/video', video.id]" class="video">
                     <div class="miniatureWrapper">
-                        <img [src]="miniatureVideo" [alt]="miniatureDescription" class="miniatureVideo">
+                        <img [src]="video.miniatureVideo" [alt]="video.description" class="miniatureVideo">
                     </div>
                     <div class="channel">
-                        <img [src]="imageProfil" [alt]="imageProfilDescription" class="imageProfilChannel">
+                        <img [src]="video.imageProfilDescription" [alt]="video.streamerName" class="imageProfilChannel">
                         <div class="streamer">
-                            <p class="catégory">Compilation LoL</p>
-                            <p class="streamerName">Nightwing3140</p>
+                            <p class="category">{{ video.category }}</p>
+                            <p class="streamerName">{{ video.streamerName }}</p>
                         </div>
                     </div>
                 </a>

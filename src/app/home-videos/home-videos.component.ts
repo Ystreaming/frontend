@@ -1,8 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 interface Categorie {
   titre: string;
   image: string;
+}
+
+interface Comment {
+  username: string;
+  comment: string;
+  date: string;
+}
+
+interface Video {
+  id: number;
+  miniatureVideo: string;
+  imageProfilDescription: string;
+  videoName: string;
+  streamerName: string;
+  category: string;
+  description: string;
+  views: number;
+  uploadDate: string;
+  comments: Comment[];
 }
 
 @Component({
@@ -10,23 +31,30 @@ interface Categorie {
   templateUrl: './home-videos.component.html',
   styleUrls: ['./home-videos.component.scss']
 })
-
-export class HomeVideosComponent {
-  // Image
-  miniatureVideo = 'assets/miniatureVideo.jpeg';
-  imageProfil = 'assets/moi.jpeg'
-
+export class HomeVideosComponent implements OnInit {
   miniatureCategorie: Categorie[] = [
     { titre: 'Gaming', image: 'assets/gaming.jpg' },
     { titre: 'IRL', image: 'assets/irl.jpg' },
     { titre: 'Podcast', image: 'assets/podcastv2.jpg' }
   ];
 
-  // Description
-  miniatureDescription = 'miniature description';
-  imageProfilDescription = 'image profil'
+  videos: Video[] = [];
+  hoveredIndex: number | null = null;
 
-  videos = Array(3).fill(0);
+  constructor(private http: HttpClient) {}
 
-  hoveredIndex: number | null = null;  // Variable pour suivre l'index de l'élément survolé
+  ngOnInit(): void {
+    this.loadVideos();
+  }
+
+  loadVideos(): void {
+    this.http.get<Video[]>('/assets/video.json').subscribe(
+        data => {
+          this.videos = data;
+        },
+        error => {
+          console.error('Erreur lors du chargement des vidéos', error);
+        }
+    );
+  }
 }
