@@ -1,25 +1,47 @@
-<section>
+<section class="wrapper">
     <div *ngIf="videoData">
-        <img [src]="videoData.miniatureVideo" alt="Miniature">
-        <h2>{{ videoData.videoName }}</h2>
-        <div>
-            <img [src]="videoData.imageProfilDescription" alt="Miniature">
-            <p> {{ videoData.streamerName }}</p>
-        </div>
-        <p>{{ videoData.description }}</p>
-        <p>{{ videoData.views }}</p>
-        <p>{{ videoData.uploadDate }}</p>
-    </div>
-    <div *ngIf="videoData?.comments">
-        <div *ngFor="let comment of videoData?.comments">
-            <div class="comment">
-                <img [src]="comment.imageUsernameCommentaire" alt="Image de profil de l'utilisateur" class="comment-image">
-                <div class="comment-content">
-                    <div class="comment-username">{{ comment.username }}</div>
-                    <div class="comment-date">{{ comment.date | date }}</div>
-                    <div class="comment-text">{{ comment.comment }}</div>
+        <img [src]="videoData.miniatureVideo" alt="Miniature" class="video">
+        <h2 class="h2 videoTitle">{{ videoData.videoName }}</h2>
+        <div class="streamer">
+            <div class="infoStreamer">
+                <img [src]="videoData.imageProfilDescription" alt="Miniature" class="imageStreamer">
+                <div class="streamerNameAndFollowers">
+                    <p> {{ videoData.streamerName }}</p>
+                    <p>30001 abonnés</p>
                 </div>
             </div>
+            <button class="followButton">
+                S'abonner
+            </button>
+        </div>
+        <div class="description">
+            <h3 class="descriptionTitle">Description</h3>
+            <div class="viewsAndDate">
+                <p>{{ videoData.views }} vues</p>
+                <p>{{ getTimeSince(videoData.uploadDate) }}</p>
+            </div>
+            <p>{{ videoData.description }}</p>
         </div>
     </div>
+    <article>
+        <ng-container *ngIf="videoData">
+            <div *ngIf="videoData?.comments" class="commentaires">
+                <p class="nombreCommentaire">{{ videoData.comments?.length || '0' }} commentaire(s)</p>
+                <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Ajoutez un commentaire..." class="addCommentaire"></textarea>
+                <div *ngFor="let comment of videoData?.comments" class="commentBoucle">
+                    <div class="comment">
+                        <img [src]="comment.imageUsernameCommentaire" alt="Image de profil de l'utilisateur" class="imageComment">
+                        <div class="comment-content">
+                            <div class="infoComment">
+                                <p class="comment-username">{{ comment.username }}</p>
+                                <p class="comment-date">{{ getTimeSince(comment.date) }}</p>
+                            </div>
+                            <p class="comment-text">{{ comment.comment }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+    </article>
 </section>
