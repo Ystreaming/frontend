@@ -39,12 +39,14 @@ export class HomeVideosComponent implements OnInit {
   ];
 
   videos: Video[] = [];
+  videosByViews: Video[] = [];
   hoveredIndex: number | null = null;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.loadVideos();
+    this.loadVideosByViews();
   }
 
   loadVideos(): void {
@@ -54,6 +56,17 @@ export class HomeVideosComponent implements OnInit {
         },
         error => {
           console.error('Erreur lors du chargement des vidéos', error);
+        }
+    );
+  }
+
+  loadVideosByViews(): void {
+    this.http.get<Video[]>('/assets/video.json').subscribe(
+        data => {
+          this.videosByViews = data.sort((a, b) => b.views - a.views);
+        },
+        error => {
+          console.error('Erreur lors du chargement des vidéos triées par vues', error);
         }
     );
   }
