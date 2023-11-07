@@ -21,6 +21,7 @@ interface Comment {
   comment: string;
   date: string;
 }
+
 @Component({
   selector: 'app-video-detail',
   templateUrl: './video-detail.component.html',
@@ -28,14 +29,13 @@ interface Comment {
 })
 export class VideoDetailComponent implements OnInit {
   videoData: Video | undefined;
+  commentText: string = '';
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      // Utilisez l'opérateur '!' pour dire à TypeScript que vous êtes sûr que 'id' n'est pas null
-      const videoId = +params.get('id')!; // Le '+' convertit la chaîne en nombre
-
+      const videoId = +params.get('id')!; // Assurez-vous que l'ID est un nombre
       if (videoId) {
         this.loadVideoData(videoId);
       }
@@ -50,7 +50,8 @@ export class VideoDetailComponent implements OnInit {
     });
   }
 
-  getTimeSince(date: string) {
+  // Méthode pour obtenir la représentation textuelle de la date
+  getTimeSince(date: string): string {
     const now = new Date();
     const past = new Date(date);
     const msPerMinute = 60 * 1000;

@@ -85,6 +85,20 @@
     border: none;
     color: white;
     width: 100%;
+    border-bottom: 1px solid white;
+  }
+
+  .buttonComment{
+    border-radius: 8px;
+    background: #EC567C;
+    padding: 16px 32px;
+    color: white;
+    border: none;
+    margin-bottom: 36px;
+  }
+  .buttonComment:disabled {
+    background-color: #cccccc;
+    color: #666666;
   }
 
   .comment {
