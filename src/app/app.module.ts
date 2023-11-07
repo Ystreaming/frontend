@@ -8,7 +8,7 @@ import { ListSubscriptionComponent } from './list-subscription/list-subscription
 import { HomePageComponent } from './home-page/home-page.component';
 import { HomeVideosComponent } from './home-videos/home-videos.component';
 import { HttpClientModule } from '@angular/common/http';
-import { VideoDetailComponent } from './video-detail/video-detail.component';
+import { VideoPageComponent } from './video-page/video-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { VideoDetailComponent } from './video-detail/video-detail.component';
     ListSubscriptionComponent,
     HomePageComponent,
     HomeVideosComponent,
-    VideoDetailComponent,
+    VideoPageComponent,
   ],
   imports: [
     BrowserModule,
