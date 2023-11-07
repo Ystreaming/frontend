@@ -1,0 +1,25 @@
+<section>
+    <div *ngIf="videoData">
+        <img [src]="videoData.miniatureVideo" alt="Miniature">
+        <h2>{{ videoData.videoName }}</h2>
+        <div>
+            <img [src]="videoData.imageProfilDescription" alt="Miniature">
+            <p> {{ videoData.streamerName }}</p>
+        </div>
+        <p>{{ videoData.description }}</p>
+        <p>{{ videoData.views }}</p>
+        <p>{{ videoData.uploadDate }}</p>
+    </div>
+    <div *ngIf="videoData?.comments">
+        <div *ngFor="let comment of videoData?.comments">
+            <div class="comment">
+                <img [src]="comment.imageUsernameCommentaire" alt="Image de profil de l'utilisateur" class="comment-image">
+                <div class="comment-content">
+                    <div class="comment-username">{{ comment.username }}</div>
+                    <div class="comment-date">{{ comment.date | date }}</div>
+                    <div class="comment-text">{{ comment.comment }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

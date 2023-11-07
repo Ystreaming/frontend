@@ -9,6 +9,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HomeVideosComponent } from './home-videos/home-videos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VideoPageComponent } from './video-page/video-page.component';
+import { VideoDetailComponent } from './video-detail/video-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { VideoPageComponent } from './video-page/video-page.component';
     HomePageComponent,
     HomeVideosComponent,
     VideoPageComponent,
+    VideoDetailComponent,
   ],
   imports: [
     BrowserModule,

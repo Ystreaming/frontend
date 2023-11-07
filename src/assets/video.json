@@ -12,11 +12,13 @@
     "comments": [
       {
         "username": "Commenter1",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
         "comment": "This was an amazing video!",
         "date": "2023-11-02"
       },
       {
         "username": "Commenter2",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
         "comment": "Can't wait for the next montage!",
         "date": "2023-11-03"
       }
@@ -35,6 +37,7 @@
     "comments": [
       {
         "username": "ChillFan",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
         "comment": "Really enjoyed the laid-back vibes of this!",
         "date": "2023-10-16"
       }
@@ -53,11 +56,13 @@
     "comments": [
       {
         "username": "AIEnthusiast",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
         "comment": "Great insights on where AI is heading!",
         "date": "2023-10-01"
       },
       {
         "username": "Skeptic101",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
         "comment": "I'm not sure AI will ever live up to the hype.",
         "date": "2023-10-02"
       }
