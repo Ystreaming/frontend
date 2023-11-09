@@ -1,0 +1,19 @@
+<section class="container">
+    <h3 class="h3">Vidéos recommandées</h3>
+    <div class="container-videos">
+        <ng-container *ngFor="let video of videos">
+            <a [routerLink]="['/video', video.id]" class="video">
+                <div class="miniatureWrapper">
+                    <img [src]="video.miniatureVideo" [alt]="video.description" class="miniatureVideo">
+                </div>
+                <div class="channel">
+                    <img [src]="video.imageProfilDescription" [alt]="video.streamerName" class="imageProfilChannel">
+                    <div class="streamer">
+                        <p class="videoName">{{ video.videoName }}</p>
+                        <p class="streamerName">{{ video.streamerName }}</p>
+                    </div>
+                </div>
+            </a>
+        </ng-container>
+    </div>
+</section>

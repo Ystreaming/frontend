@@ -67,6 +67,7 @@
 }
 
 .commentaires {
+  padding-right: 20%;
   p {
     margin: 0;
   }
@@ -130,4 +131,9 @@
       line-height: normal;
     }
   }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 80% 20%;
 }

@@ -11,6 +11,7 @@ import { HomeVideosComponent } from './components/home-videos/home-videos.compon
 import { HttpClientModule } from '@angular/common/http';
 import { VideoPageComponent } from './pages/video-page/video-page.component';
 import { VideoDetailComponent } from './components/video-detail/video-detail.component';
+import { RecommendedVideoComponent } from './components/recommended-video/recommended-video.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { VideoDetailComponent } from './components/video-detail/video-detail.com
     HomeVideosComponent,
     VideoPageComponent,
     VideoDetailComponent,
+    RecommendedVideoComponent,
   ],
   imports: [
     BrowserModule,
