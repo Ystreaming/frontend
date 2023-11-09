@@ -1,1 +1,26 @@
-<p>login-page works!</p>
+<section>
+    <div>
+        <h3 class="h3">Connexion à votre compte</h3>
+        <span class="line"></span>
+        <div class="login-container">
+            <form action="/submit-your-login-form" method="post">
+                <div class="form-group">
+                    <label for="text" class="userName">Nom d'utilisateur</label>
+                    <input type="text" id="text" name="text" required class="inputName">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="userPassword">Mot de passe</label>
+                    <input type="password" id="password" name="password" required class="inputPassword">
+                </div>
+                <button type="submit">Connexion</button>
+            </form>
+        </div>
+        <p>
+            Vous n'avez pas de comptes ?
+            <a href="/register">
+                Inscrivez-vous
+            </a>
+        </p>
+    </div>
+    <div></div>
+</section>

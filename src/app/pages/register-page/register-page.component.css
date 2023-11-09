@@ -1,0 +1,16 @@
+.userPassword, .userEmail, .userBirthday, .userName {
+  color: #F4EDDE;
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.inputPassword, .inputEmail, .inputBirthday, .inputName {
+  background: none;
+  border-bottom: 1px solid #F4EDDE;
+  border-right: none;
+}
+
+/*# sourceMappingURL=register-page.component.css.map */

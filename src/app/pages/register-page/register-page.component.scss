@@ -1,0 +1,54 @@
+%user-label-style {
+  color: #F4EDDE;
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+%user-input-style {
+  background: none;
+  border-bottom: 1px solid #F4EDDE;
+  border-right: none;
+}
+
+.userName {
+  @extend %user-label-style;
+}
+
+.userBirthday {
+  @extend %user-label-style;
+}
+
+.userEmail {
+  @extend %user-label-style;
+}
+
+.userPassword {
+  @extend %user-label-style;
+}
+
+
+
+.inputName {
+  @extend %user-input-style
+}
+
+.inputBirthday {
+  @extend %user-input-style
+}
+
+.inputEmail {
+  @extend %user-input-style
+}
+
+.inputPassword {
+  @extend %user-input-style
+}
+
+.login-container {
+  .form-group {
+
+  }
+}
