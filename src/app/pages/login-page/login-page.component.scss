@@ -108,15 +108,8 @@
   }
 }
 
-.input-focused {
-  border-color: #EC567C;
-}
-
-.label-focused {
-  color: #EC567C;
-}
-
-input::selection {
-  background: transparent;
-  color: inherit;
+input:focus {
+  color: #F4EDDE;
+  border-bottom-color: #EC567C;
+  outline: none;
 }
