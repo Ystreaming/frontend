@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms'; // Importez FormsModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { ListSubscriptionComponent } from './list-subscription/list-subscription.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { HomeVideosComponent } from './home-videos/home-videos.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ListSubscriptionComponent } from './components/list-subscription/list-subscription.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { HomeVideosComponent } from './components/home-videos/home-videos.component';
 import { HttpClientModule } from '@angular/common/http';
-import { VideoPageComponent } from './video-page/video-page.component';
-import { VideoDetailComponent } from './video-detail/video-detail.component';
+import { VideoPageComponent } from './pages/video-page/video-page.component';
+import { VideoDetailComponent } from './components/video-detail/video-detail.component';
 
 @NgModule({
   declarations: [
