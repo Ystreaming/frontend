@@ -13,42 +13,31 @@
   border-right: none;
 }
 
-.userName {
+.userName, .userBirthday, .userEmail, .userPassword {
   @extend %user-label-style;
 }
 
-.userBirthday {
-  @extend %user-label-style;
+.inputName, .inputBirthday, .inputEmail, .inputPassword {
+  @extend %user-input-style;
 }
 
-.userEmail {
-  @extend %user-label-style;
-}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  .form {
+    .login-container {
 
-.userPassword {
-  @extend %user-label-style;
-}
+      .form-group {
 
-
-
-.inputName {
-  @extend %user-input-style
-}
-
-.inputBirthday {
-  @extend %user-input-style
-}
-
-.inputEmail {
-  @extend %user-input-style
-}
-
-.inputPassword {
-  @extend %user-input-style
-}
-
-.login-container {
-  .form-group {
-
+      }
+    }
+  }
+  .image {
+    max-width: 50vw;
+    max-height: 100vh;
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
 }

@@ -1,4 +1,4 @@
-.userPassword, .userEmail, .userBirthday, .userName {
+.userName, .userBirthday, .userEmail, .userPassword {
   color: #F4EDDE;
   font-family: Montserrat, sans-serif;
   font-size: 20px;
@@ -7,10 +7,23 @@
   line-height: normal;
 }
 
-.inputPassword, .inputEmail, .inputBirthday, .inputName {
+.inputName, .inputBirthday, .inputEmail, .inputPassword {
   background: none;
   border-bottom: 1px solid #F4EDDE;
   border-right: none;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.container .image {
+  max-width: 50vw;
+  max-height: 100vh;
+}
+.container .image img {
+  height: 100%;
+  width: 100%;
 }
 
 /*# sourceMappingURL=register-page.component.css.map */
