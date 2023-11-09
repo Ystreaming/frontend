@@ -6,6 +6,9 @@ import { Component, Renderer2 } from '@angular/core';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
+
+  username: string = '';
+  password: string = '';
   constructor(private renderer: Renderer2) {}
 
   // Méthode pour gérer l'événement focus
@@ -24,5 +27,9 @@ export class LoginPageComponent {
     if (label) {
       this.renderer.removeStyle(label, 'color');
     }
+  }
+
+  submitLogin(): void {
+    console.log('Login info:', { username: this.username, password: this.password });
   }
 }

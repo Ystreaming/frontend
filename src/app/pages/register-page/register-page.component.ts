@@ -1,4 +1,5 @@
 import { Component, Renderer2 } from '@angular/core';
+import { IUser } from '../../models/user.model';
 
 @Component({
   selector: 'app-register-page',
@@ -6,9 +7,22 @@ import { Component, Renderer2 } from '@angular/core';
   styleUrls: ['./register-page.component.scss']
 })
 export class RegisterPageComponent {
+  user: IUser = {
+    id: 0,
+    firstname: "",
+    lastname: "",
+    email: "",
+    dateOfBirth: "",
+    username: "",
+    password: "",
+    createdAt: new Date().toISOString(),
+    status: false,
+    language: "",
+    profileImage: ""
+  };
+
   constructor(private renderer: Renderer2) {}
 
-  // Méthode pour gérer l'événement focus
   onFocus(event: FocusEvent): void {
     const target = event.target as HTMLElement;
     const label = target.previousElementSibling as HTMLElement;
@@ -17,12 +31,15 @@ export class RegisterPageComponent {
     }
   }
 
-  // Méthode pour gérer l'événement blur
   onBlur(event: FocusEvent): void {
     const target = event.target as HTMLElement;
     const label = target.previousElementSibling as HTMLElement;
     if (label) {
       this.renderer.removeStyle(label, 'color');
     }
+  }
+
+  submitForm(): void {
+    console.log('User submitted:', this.user);
   }
 }
