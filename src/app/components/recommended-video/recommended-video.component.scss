@@ -1,0 +1,40 @@
+.container-videos {
+  display: grid;
+  gap: 32px;
+  .video {
+    display: grid;
+    gap: 24px;
+    .miniatureWrapper {
+      .miniatureVideo {
+        width: 256px;
+        height: 144px;
+        border-radius: 8px;
+      }
+    }
+    .channel {
+      display: flex;
+      gap: 24px;
+      p {
+        margin: 0;
+        text-align: left;
+      }
+      .imageProfilChannel {
+        width: 48px;
+        height: 48px;
+        border-radius: 50px;
+        object-fit: cover;
+      }
+      .streamer {
+        .videoName{
+          color: #F4EDDE;
+          max-width: 160px;
+          max-height: 20px;
+          overflow: hidden;
+        }
+        .streamerName {
+
+        }
+      }
+    }
+  }
+}

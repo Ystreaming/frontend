@@ -23,7 +23,7 @@
             <p>{{ videoData.description }}</p>
         </div>
     </div>
-    <article>
+    <article class="container">
         <ng-container *ngIf="videoData">
             <div *ngIf="videoData?.comments" class="commentaires">
                 <p class="nombreCommentaire">{{ videoData.comments?.length || '0' }} commentaire(s)</p>
@@ -45,6 +45,6 @@
                 </div>
             </div>
         </ng-container>
-
+        <app-recommended-video></app-recommended-video>
     </article>
 </section>
