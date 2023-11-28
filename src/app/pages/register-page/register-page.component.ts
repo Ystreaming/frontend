@@ -1,5 +1,8 @@
 import { Component, Renderer2 } from '@angular/core';
 import { IUser } from '../../models/user.model';
+import { UserService } from 'src/app/services/user.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -8,7 +11,6 @@ import { IUser } from '../../models/user.model';
 })
 export class RegisterPageComponent {
   user: IUser = {
-    id: 0,
     firstname: "",
     lastname: "",
     email: "",
@@ -21,7 +23,7 @@ export class RegisterPageComponent {
     profileImage: ""
   };
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private userService: UserService, private router: Router) {}
 
   onFocus(event: FocusEvent): void {
     const target = event.target as HTMLElement;
@@ -40,6 +42,8 @@ export class RegisterPageComponent {
   }
 
   submitForm(): void {
-    console.log('User submitted:', this.user);
+    this.userService.createUser(this.user).subscribe(res => {
+      this.router.navigate(['/login']);
+    })
   }
 }
