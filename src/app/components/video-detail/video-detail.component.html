@@ -6,8 +6,8 @@
             <div class="infoStreamer">
                 <img [src]="videoData.imageProfilDescription" alt="Miniature" class="imageStreamer">
                 <div class="streamerNameAndFollowers">
-                    <p> {{ videoData.streamerName }}</p>
-                    <p>30001 abonnés</p>
+                    <p><a [routerLink]="['/channel', videoData.streamerName]">{{ videoData.streamerName }}</a></p>
+                    <p>{{ subscriberCount | number }} abonnés</p>
                 </div>
             </div>
             <button class="followButton">

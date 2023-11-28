@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 interface Video {
   id: number;
@@ -30,8 +30,9 @@ interface Comment {
 export class VideoDetailComponent implements OnInit {
   videoData: Video | undefined;
   commentText: string = '';
+  subscriberCount: number | undefined;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -44,13 +45,27 @@ export class VideoDetailComponent implements OnInit {
 
   loadVideoData(videoId: number) {
     this.http.get<Video[]>('/assets/video.json').subscribe(videos => {
-      this.videoData = videos.find(video => video.id === videoId);
+      const video = videos.find(v => v.id === videoId);
+      if (video) {
+        this.videoData = video;
+        this.loadStreamerData(video.streamerName);
+      }
     }, error => {
       console.error('Error loading video data', error);
     });
   }
 
-  // Méthode pour obtenir la représentation textuelle de la date
+  loadStreamerData(streamerName: string) {
+    this.http.get<{ channels: any[] }>('/assets/ystreameur.json').subscribe(data => {
+      const streamer = data.channels.find(channel => channel.name === streamerName);
+      if (streamer) {
+        this.subscriberCount = streamer.subscriberCount;
+      }
+    }, error => {
+      console.error('Error loading streamer data', error);
+    });
+  }
+
   getTimeSince(date: string): string {
     const now = new Date();
     const past = new Date(date);
