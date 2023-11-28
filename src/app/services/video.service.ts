@@ -29,7 +29,7 @@ export class VideoService {
     return this.http.put<IVideo>(`${this.apiUrl}/${id}`, videoData);
   }
 
-  deleteVideoById(id: number): Observable<IVideo> {
+  deleteVideoById(id: number): Observable<any> {
     return this.http.delete<IVideo>(`${this.apiUrl}/${id}`);
   }
 }
