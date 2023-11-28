@@ -17,8 +17,8 @@ export class UserService {
     return this.http.post<IUser>(this.apiUrl, user);
   }
 
-  loginUser(email: string, password: string): Observable<IUser> {
-    return this.http.post<IUser>(`${this.apiUrl}/login`, { email, password });
+  loginUser(username: string, password: string): Observable<string> {
+    return this.http.post<string>(`${this.apiUrl}/login`, { username, password });
   }
 
   getAllUsers(): Observable<IUser[]> {

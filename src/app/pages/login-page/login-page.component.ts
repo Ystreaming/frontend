@@ -1,4 +1,7 @@
 import { Component, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -9,7 +12,10 @@ export class LoginPageComponent {
 
   username: string = '';
   password: string = '';
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2, private userService: UserService,
+    private localStorageService: LocalStorageService, private router: Router
+    ) {}
 
   // Méthode pour gérer l'événement focus
   onFocus(event: FocusEvent): void {
@@ -30,6 +36,9 @@ export class LoginPageComponent {
   }
 
   submitLogin(): void {
-    console.log('Login info:', { username: this.username, password: this.password });
+    this.userService.loginUser(this.username, this.password).subscribe(token => {
+      this.localStorageService.set('token', token);
+      return this.router.navigate(['/']);
+    })
   }
 }
