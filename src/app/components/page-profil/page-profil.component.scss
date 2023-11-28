@@ -1,0 +1,52 @@
+.container {
+  display: grid;
+  gap: 48px;
+  .infos {
+    display: flex;
+    gap: 50px;
+    .imageProfilNavBar {
+      width: 183px;
+      height: 183px;
+      border-radius: 100px;
+      object-fit: cover;
+    }
+    .h3 {
+      color: #F4EDDE;
+      font-family: Montserrat, sans-serif;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    .button {
+      padding: 16px 32px;
+      gap: 10px;
+      border-radius: 8px;
+      background: #EC567C;
+      border: none;
+      color: #F4EDDE;
+      font-family: Montserrat, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+  .videos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    a {
+      text-decoration: none;
+      color: #F4EDDE;
+    }
+    .miniatureVideo {
+      width: 356px;
+      height: 200px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .titleVideo {
+      max-width: 250px;
+    }
+  }
+}
