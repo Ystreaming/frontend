@@ -67,5 +67,80 @@
         "date": "2023-10-02"
       }
     ]
+  },
+  {
+    "id": 4,
+    "miniatureVideo": "assets/miniatureVideo3.png",
+    "imageProfilDescription": "assets/moi.jpeg",
+    "videoName": "Full Game Kai'sa",
+    "streamerName": "GamerPro123",
+    "category": "Gaming",
+    "description": "A montage of epic gaming moments from my recent streams.",
+    "views": 15000,
+    "uploadDate": "2023-11-01",
+    "comments": [
+      {
+        "username": "Commenter1",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
+        "comment": "This was an amazing video!",
+        "date": "2023-11-02"
+      },
+      {
+        "username": "Commenter2",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
+        "comment": "Can't wait for the next montage!",
+        "date": "2023-11-03"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "miniatureVideo": "assets/miniatureVlogDaout.jpeg",
+    "imageProfilDescription": "assets/moi.jpeg",
+    "videoName": "VLOG d'aout avec mes coupains d'amour",
+    "streamerName": "GamerPro123",
+    "category": "Gaming",
+    "description": "A montage of epic gaming moments from my recent streams.",
+    "views": 15000,
+    "uploadDate": "2023-11-01",
+    "comments": [
+      {
+        "username": "Commenter1",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
+        "comment": "This was an amazing video!",
+        "date": "2023-11-02"
+      },
+      {
+        "username": "Commenter2",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
+        "comment": "Can't wait for the next montage!",
+        "date": "2023-11-03"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "miniatureVideo": "assets/miniatureVideo3.png",
+    "imageProfilDescription": "assets/moi.jpeg",
+    "videoName": "Mon nouveau setup",
+    "streamerName": "GamerPro123",
+    "category": "Gaming",
+    "description": "A montage of epic gaming moments from my recent streams.",
+    "views": 15000,
+    "uploadDate": "2023-11-01",
+    "comments": [
+      {
+        "username": "Commenter1",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
+        "comment": "This was an amazing video!",
+        "date": "2023-11-02"
+      },
+      {
+        "username": "Commenter2",
+        "imageUsernameCommentaire": "assets/moi.jpeg",
+        "comment": "Can't wait for the next montage!",
+        "date": "2023-11-03"
+      }
+    ]
   }
 ]

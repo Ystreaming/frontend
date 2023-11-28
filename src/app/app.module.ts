@@ -16,6 +16,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { PageProfilComponent } from './components/page-profil/page-profil.component';
+import { ProfilPageComponent } from './pages/profil-page/profil-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     RecommendedVideoComponent,
     LoginPageComponent,
     RegisterPageComponent,
+    PageProfilComponent,
+    ProfilPageComponent,
   ],
   imports: [
     BrowserModule,

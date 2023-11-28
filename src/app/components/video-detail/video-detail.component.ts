@@ -35,7 +35,7 @@ export class VideoDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const videoId = +params.get('id')!; // Assurez-vous que l'ID est un nombre
+      const videoId = +params.get('id')!;
       if (videoId) {
         this.loadVideoData(videoId);
       }
@@ -57,7 +57,7 @@ export class VideoDetailComponent implements OnInit {
     const msPerMinute = 60 * 1000;
     const msPerHour = msPerMinute * 60;
     const msPerDay = msPerHour * 24;
-    const msPerMonth = msPerDay * 30; // Approximation
+    const msPerMonth = msPerDay * 30;
     const msPerYear = msPerDay * 365;
 
     const elapsed = now.getTime() - past.getTime();
