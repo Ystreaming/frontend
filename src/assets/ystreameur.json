@@ -1,0 +1,31 @@
+{
+  "channels": [
+    {
+      "id": 1,
+      "profileImage": "assets/moi.jpeg",
+      "name": "GamerPro123",
+      "subscriberCount": 123456,
+      "videoCount": 4,
+      "channelDescription": "Ici la description de la chaine de GamerPro123",
+      "videos": [1, 4, 5, 6]
+    },
+    {
+      "id": 2,
+      "profileImage": "assets/moi.jpeg",
+      "name": "LiveLifeLoud",
+      "subscriberCount": 234567,
+      "videoCount": 1,
+      "channelDescription": "Ici la description de la chaine de LiveLifeLoud",
+      "videos": [2]
+    },
+    {
+      "id": 3,
+      "profileImage": "assets/moi.jpeg",
+      "name": "TechTalker",
+      "subscriberCount": 345678,
+      "videoCount": 1,
+      "channelDescription": "Ici la description de la chaine de TechTalker",
+      "videos": [3]
+    }
+  ]
+}

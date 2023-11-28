@@ -1,0 +1,21 @@
+<section class="container">
+    <div class="infos" *ngIf="streamerData">
+        <img [src]="streamerData.profileImage" [alt]="streamerData.name" class="imageProfilNavBar">
+        <div>
+            <h3 class="h3">{{ streamerData.name }}</h3>
+            <div>
+                <p>{{ streamerData.subscriberCount | number }} abonnés - {{ streamerData.videoCount }} vidéos</p>
+            </div>
+            <p>{{ streamerData.channelDescription }}</p>
+            <button class="button">S'abonner</button>
+        </div>
+    </div>
+    <div class="videos" *ngIf="videos.length">
+        <div *ngFor="let video of videos">
+            <a [routerLink]="['/video', video.id]">
+                <img [src]="video.miniatureVideo" [alt]="video.videoName" class="miniatureVideo">
+                <h3 class="titleVideo">{{ video.videoName }}</h3>
+            </a>
+        </div>
+    </div>
+</section>
