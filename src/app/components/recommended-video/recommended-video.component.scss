@@ -1,38 +1,49 @@
-.container-videos {
-  display: grid;
-  gap: 32px;
-  .video {
+.video-container {
+  &__videos {
+    display: grid;
+    gap: 32px;
+  }
+
+  &__title {
+  }
+
+  .video-link {
     display: grid;
     gap: 24px;
-    .miniatureWrapper {
-      .miniatureVideo {
+
+    &__thumbnail-wrapper {
+      .video-link__thumbnail {
         width: 256px;
         height: 144px;
         border-radius: 8px;
       }
     }
-    .channel {
+
+    &__channel {
       display: flex;
       gap: 24px;
-      p {
-        margin: 0;
-        text-align: left;
-      }
-      .imageProfilChannel {
+
+      .video-link__channel-profile {
         width: 48px;
         height: 48px;
         border-radius: 50px;
         object-fit: cover;
       }
-      .streamer {
-        .videoName{
+
+      &__details {
+        p {
+          margin: 0;
+          text-align: left;
+        }
+
+        .video-link__name {
           color: #F4EDDE;
           max-width: 160px;
           max-height: 20px;
           overflow: hidden;
         }
-        .streamerName {
 
+        .video-link__streamer-name {
         }
       }
     }
