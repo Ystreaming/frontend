@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-list-subscription',
@@ -9,16 +9,32 @@ export class ListSubscriptionComponent {
   imagePath = 'assets/moi.jpeg';
   imageAltText = 'image profil';
 
-  totalItems = Array(20).fill(0);  // Crée un tableau de 20 éléments
-  displayedItemsCount = 8;  // Nombre d'éléments à afficher initialement
+  totalItems = Array(20).fill(0);
+  displayedItemsCount = 8;
 
-  // Méthode pour afficher plus d'éléments
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.adjustDisplayedItems();
+  }
+
   showMore(): void {
     this.displayedItemsCount = Math.min(this.displayedItemsCount + 8, this.totalItems.length);
   }
 
-  // Méthode pour afficher moins d'éléments
   showLess(): void {
     this.displayedItemsCount = Math.max(this.displayedItemsCount - 8, 8);
+  }
+
+  private adjustDisplayedItems(): void {
+    // Obtenez la largeur actuelle de la fenêtre
+    const windowWidth = window.innerWidth;
+
+    // Si la largeur de la fenêtre est inférieure à 1400px, affichez tous les éléments
+    if (windowWidth < 1400) {
+      this.displayedItemsCount = this.totalItems.length;
+    } else {
+      // Sinon, réinitialisez le nombre d'éléments affichés à 8
+      this.displayedItemsCount = 8;
+    }
   }
 }

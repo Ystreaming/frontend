@@ -2,9 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
-.wrapper { padding-inline: 64px;
-padding-top: 34px
-}
+.wrapper { padding-inline: 64px; padding-top: 34px }
+@media (max-width: 600px) { .wrapper { padding-inline: 10px; } }
+@media (max-width: 1024px) { .wrapper { padding-inline: 25px; } }
 
 body {
   background-color: #1E1E1E;

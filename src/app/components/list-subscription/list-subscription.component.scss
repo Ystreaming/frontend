@@ -58,3 +58,15 @@
     }
   }
 }
+
+@media screen and (max-width: 1400px) {
+  .subscription-list {
+    .subscription-list__title,
+    .subscription-list__streamer-name,
+    .subscription-list__viewer-number,
+    .subscription-list__buttons{
+      display: none;
+    }
+  }
+}
+
