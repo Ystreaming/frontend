@@ -1,3 +1,4 @@
+import { NotifierService } from 'angular-notifier';
 import { Component, Renderer2 } from '@angular/core';
 import { IUser } from '../../models/user.model';
 import { UserService } from 'src/app/services/user.service';
@@ -23,7 +24,10 @@ export class RegisterPageComponent {
     profileImage: ""
   };
 
-  constructor(private renderer: Renderer2, private userService: UserService, private router: Router) {}
+  constructor(
+    private renderer: Renderer2, private userService: UserService,
+    private router: Router, private notifier: NotifierService
+    ) {}
 
   onFocus(event: FocusEvent): void {
     const target = event.target as HTMLElement;
@@ -43,7 +47,10 @@ export class RegisterPageComponent {
 
   submitForm(): void {
     this.userService.createUser(this.user).subscribe(res => {
+      this.notifier.notify('success', 'Vous vous êtes inscrit avec succès !');
       this.router.navigate(['/login']);
+    }, error => {
+      this.notifier.notify('error', 'Une erreur est survenue lors de l\'inscription');
     })
   }
 }
