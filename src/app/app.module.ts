@@ -18,6 +18,7 @@ import { LocalStorageService } from './services/local-storage.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { PageProfilComponent } from './components/page-profil/page-profil.component';
 import { ProfilPageComponent } from './pages/profil-page/profil-page.component';
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ProfilPageComponent } from './pages/profil-page/profil-page.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NotifierModule
   ],
   providers: [
     LocalStorageService,
