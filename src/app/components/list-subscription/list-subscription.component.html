@@ -1,19 +1,19 @@
-<section class="wrapper list-subscription">
-    <h3 class="h3">
+<section class="subscription-list wrapper">
+    <h3 class="subscription-list__title">
         Liste des abonnements
     </h3>
-    <ul>
-        <li *ngFor="let item of totalItems | slice:0:displayedItemsCount">
-            <img [src]="imagePath" [alt]="imageAltText" class="imageProfilNavBar">
-            <p class="streamerName">Nightwing3140</p>
-            <p class="numberViewer">30k</p>
+    <ul class="subscription-list__items">
+        <li class="subscription-list__item" *ngFor="let item of totalItems | slice:0:displayedItemsCount">
+            <img class="subscription-list__image" [src]="imagePath" [alt]="imageAltText">
+            <p class="subscription-list__streamer-name">Nightwing3140</p>
+            <p class="subscription-list__viewer-number">30k</p>
         </li>
     </ul>
-    <div class="containerButton">
-        <button class="button" (click)="showMore()">
+    <div class="subscription-list__buttons">
+        <button class="subscription-list__button" (click)="showMore()">
             Afficher plus
         </button>
-        <button class="button" *ngIf="displayedItemsCount > 8" (click)="showLess()">
+        <button class="subscription-list__button--less" *ngIf="displayedItemsCount > 8" (click)="showLess()">
             Afficher moins
         </button>
     </div>
