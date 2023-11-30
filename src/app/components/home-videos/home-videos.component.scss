@@ -101,3 +101,9 @@
     background: none;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .video-container {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}

@@ -24,6 +24,8 @@
       gap: 24px;
 
       .video-link__channel-profile {
+        min-width: 48px;
+        min-height: 48px;
         width: 48px;
         height: 48px;
         border-radius: 50px;
@@ -46,6 +48,18 @@
         .video-link__streamer-name {
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .video-link {
+    display: flex !important;
+    border-bottom: 1px solid #F4EDDE;
+    &__channel {
+      margin-left: 0px;
+      margin-top: auto;
+      margin-bottom: auto;
     }
   }
 }

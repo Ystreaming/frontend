@@ -168,3 +168,12 @@
   display: grid;
   grid-template-columns: 80% 20%;
 }
+
+@media screen and (max-width: 1020px) {
+  .comments-container {
+    display: block;
+  }
+  .comments-block {
+    padding-right: 0px;
+  }
+}
