@@ -1,19 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
-
-interface Video {
-  id: number;
-  miniatureVideo: string;
-  imageProfilDescription: string;
-  videoName: string;
-  streamerName: string;
-  category: string;
-  description: string;
-  views: number;
-  uploadDate: string;
-  comments: Comment[];
-}
+import { VideoService } from 'src/app/services/video.service';
+import { ChannelService } from 'src/app/services/channel.service';
+import { IVideo } from 'src/app/models/video.model';
+import { IChannel } from 'src/app/models/channel.model';
 
 interface Comment {
   username: string;
@@ -28,41 +19,22 @@ interface Comment {
   styleUrls: ['./video-detail.component.scss']
 })
 export class VideoDetailComponent implements OnInit {
-  videoData: Video | undefined;
+  videoData: any;
+  channelData: any;
   commentText: string = '';
   subscriberCount: number | undefined;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private http: HttpClient, private route: ActivatedRoute,
+    private router: Router, private videoService: VideoService) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const videoId = +params.get('id')!;
-      if (videoId) {
-        this.loadVideoData(videoId);
-      }
-    });
-  }
-
-  loadVideoData(videoId: number) {
-    this.http.get<Video[]>('/assets/video.json').subscribe(videos => {
-      const video = videos.find(v => v.id === videoId);
-      if (video) {
-        this.videoData = video;
-        this.loadStreamerData(video.streamerName);
-      }
-    }, error => {
-      console.error('Error loading video data', error);
-    });
-  }
-
-  loadStreamerData(streamerName: string) {
-    this.http.get<{ channels: any[] }>('/assets/ystreameur.json').subscribe(data => {
-      const streamer = data.channels.find(channel => channel.name === streamerName);
-      if (streamer) {
-        this.subscriberCount = streamer.subscriberCount;
-      }
-    }, error => {
-      console.error('Error loading streamer data', error);
+      const videoId = params.get('id')!;
+      this.videoService.getVideoById(videoId).subscribe(response => {
+        this.videoData = response
+        console.log(response);
+      });
     });
   }
 

@@ -21,7 +21,7 @@ export class VideoService {
     return this.http.post<IVideo>(this.apiUrl, videoData);
   }
 
-  getVideoById(id: number): Observable<IVideo> {
+  getVideoById(id: string): Observable<IVideo> {
     return this.http.get<IVideo>(`${this.apiUrl}/${id}`);
   }
 

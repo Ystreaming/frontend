@@ -1,12 +1,12 @@
 <section class="wrapper">
     <div *ngIf="videoData" class="video-block">
         <img [src]="videoData.miniatureVideo" alt="Miniature" class="video-block__image">
-        <h2 class="video-block__title">{{ videoData.videoName }}</h2>
+        <h2 class="video-block__title">{{ videoData.title }}</h2>
         <div class="streamer-block">
             <div class="streamer-block__info">
                 <img [src]="videoData.imageProfilDescription" alt="Miniature" class="streamer-block__profile-image">
                 <div class="streamer-block__name-followers">
-                    <p><a [routerLink]="['/channel', videoData.streamerName]" class="streamer-block__name">{{ videoData.streamerName }}</a></p>
+                    <p><a [routerLink]="['/channel', videoData.streamerName]" class="streamer-block__name">{{ videoData.idChannel.name }}</a></p>
                     <p class="streamer-block__followers">{{ subscriberCount | number }} abonnés</p>
                 </div>
             </div>
@@ -17,8 +17,8 @@
         <div class="description-block">
             <h3 class="description-block__title">Description</h3>
             <div class="description-block__views-date">
-                <p class="description-block__views">{{ videoData.views }} vues</p>
-                <p class="description-block__date">{{ getTimeSince(videoData.uploadDate) }}</p>
+                <p class="description-block__views">{{ videoData.view }} vues</p>
+                <p class="description-block__date">{{ getTimeSince(videoData.time) }}</p>
             </div>
             <p class="description-block__text">{{ videoData.description }}</p>
         </div>
