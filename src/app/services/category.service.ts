@@ -13,8 +13,12 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCategories(): Observable<ICategory[]> {
-    return this.http.get<ICategory[]>(this.apiUrl);
+  getAllCategories(limit?: number): Observable<any> {
+    let url = this.apiUrl;
+    if (limit !== undefined) {
+        url += `?limit=${limit}`;
+    }
+    return this.http.get<any>(url);
   }
 
   createCategory(categoryData: ICategory): Observable<ICategory> {

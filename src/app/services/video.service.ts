@@ -14,8 +14,12 @@ export class VideoService {
 
   constructor(private http: HttpClient) { }
 
-  getAllVideos(): Observable<IVideo[]> {
-    return this.http.get<IVideo[]>(this.apiUrl);
+  getAllVideos(limit?: number): Observable<any> {
+    let url = this.apiUrl;
+    if (limit !== undefined) {
+        url += `?limit=${limit}`;
+    }
+    return this.http.get<any>(url);
   }
 
   createVideo(videoData: IVideo): Observable<IVideo> {
