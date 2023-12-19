@@ -3,17 +3,17 @@
         Liste des abonnements
     </h3>
     <ul class="subscription-list__items">
-        <li class="subscription-list__item" *ngFor="let item of totalItems | slice:0:displayedItemsCount">
-            <img class="subscription-list__image" [src]="imagePath" [alt]="imageAltText">
-            <p class="subscription-list__streamer-name">Nightwing3140</p>
+        <li class="subscription-list__item" *ngFor="let sub of subscribers">
+            <img class="subscription-list__image" [src]="sub.image.path" [alt]="">
+            <p class="subscription-list__streamer-name">{{ sub.name }}</p>
             <p class="subscription-list__viewer-number">30k</p>
         </li>
     </ul>
     <div class="subscription-list__buttons">
-        <button class="subscription-list__button" (click)="showMore()">
+        <button class="subscription-list__button">
             Afficher plus
         </button>
-        <button class="subscription-list__button--less" *ngIf="displayedItemsCount > 8" (click)="showLess()">
+        <button class="subscription-list__button--less">
             Afficher moins
         </button>
     </div>

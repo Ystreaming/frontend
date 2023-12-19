@@ -36,4 +36,8 @@ export class UserService {
   deleteUserById(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
+  getSubByUser(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/sub/${id}`);
+  }
 }
