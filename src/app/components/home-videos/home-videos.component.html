@@ -12,7 +12,7 @@
             <ng-container *ngFor="let video of videos">
                 <a [routerLink]="['/video', video.id]" class="video">
                     <div class="video__miniature-wrapper">
-                        <img [src]="environment.apiUrl + '/' + video.img.path" [alt]="video.description" class="video__miniature">
+                        <img [src]="environment.apiUrl + video.img.path" [alt]="video.description" class="video__miniature">
                     </div>
                     <div class="video__channel">
                         <img [src]="video.imageProfilDescription" [alt]="video.streamerName" class="video__image-profil-channel">
@@ -63,7 +63,7 @@
         <article class="video-container video-wrapper">
             <a *ngFor="let category of categories; let i = index" href="" class="video">
                 <div class="video__miniature-wrapper" (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">
-                    <img [src]="environment.apiUrl + '/' + category.image" [alt]="'Image ' + (i + 1)" class="video__miniature video__miniature--blur" [class.blur]="hoveredIndex === i">
+                    <img [src]="environment.apiUrl + category.image" [alt]="'Image ' + (i + 1)" class="video__miniature video__miniature--blur" [class.blur]="hoveredIndex === i">
                     <div class="video__title-overlay" *ngIf="hoveredIndex === i">{{category.name}}</div>
                 </div>
             </a>
