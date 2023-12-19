@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from 'src/app/services/category.service';
 import { VideoService } from 'src/app/services/video.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,27 +14,29 @@ interface Categorie {
   styleUrls: ['./home-videos.component.scss']
 })
 export class HomeVideosComponent implements OnInit {
-  miniatureCategorie: Categorie[] = [
-    { titre: 'Gaming', image: 'assets/gaming.jpg' },
-    { titre: 'IRL', image: 'assets/irl.jpg' },
-    { titre: 'Podcast', image: 'assets/podcastv2.jpg' }
-  ];
-
   videos: any = [];
   videosByViews: any = [];
   hoveredIndex: number | null = null;
+  categories: any = [];
   environment = environment;
 
-  constructor(private videoService: VideoService) {}
+  constructor(private videoService: VideoService, private categoryService: CategoryService) {}
 
   ngOnInit(): void {
     this.loadVideos(6);
+    this.loadCategories(3);
   }
 
   loadVideos(limit: number) {
     this.videoService.getAllVideos(limit).subscribe(response => {
-      console.log(response);
       this.videos = response.videos;
     });
+  }
+
+  loadCategories(limit: number) {
+    this.categoryService.getAllCategories(limit).subscribe(response => {
+      console.log(response);
+      this.categories = response.categories;
+    })
   }
 }

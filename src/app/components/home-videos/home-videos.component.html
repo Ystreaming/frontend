@@ -61,10 +61,10 @@
             </button>
         </div>
         <article class="video-container video-wrapper">
-            <a *ngFor="let categorie of miniatureCategorie; let i = index" href="" class="video">
+            <a *ngFor="let category of categories; let i = index" href="" class="video">
                 <div class="video__miniature-wrapper" (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">
-                    <img [src]="categorie.image" [alt]="'Image ' + (i + 1)" class="video__miniature video__miniature--blur" [class.blur]="hoveredIndex === i">
-                    <div class="video__title-overlay" *ngIf="hoveredIndex === i">{{categorie.titre}}</div>
+                    <img [src]="environment.apiUrl + '/' + category.image" [alt]="'Image ' + (i + 1)" class="video__miniature video__miniature--blur" [class.blur]="hoveredIndex === i">
+                    <div class="video__title-overlay" *ngIf="hoveredIndex === i">{{category.name}}</div>
                 </div>
             </a>
         </article>
