@@ -71,3 +71,36 @@
     }
   }
 }
+
+@media screen and (max-width: 800px) {
+  .container {
+    padding-right: 25px;
+  }
+  .infos {
+    display: block !important;
+    margin: auto;
+    .imageProfilNavBar {
+      display: flex;
+      margin: auto;
+    }
+    div {
+      margin: auto;
+      text-align: center;
+    }
+  }
+  .videos {
+    div {
+      border: none;
+    }
+    a {
+      margin: auto;
+      flex-direction: column;
+      img {
+        margin: auto;
+      }
+      .titleVideo {
+        margin: auto;
+      }
+    }
+  }
+}
