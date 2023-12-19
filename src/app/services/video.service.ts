@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IVideo } from '../models/video.model';
+import { IComment } from '../models/comment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class VideoService {
 
   deleteVideoById(id: number): Observable<any> {
     return this.http.delete<IVideo>(`${this.apiUrl}/${id}`);
+  }
+
+  getCommentsByVideoId(id: string): Observable<IComment[]> {
+    return this.http.get<IComment[]>(`${this.apiUrl}/comments/${id}`);
   }
 }

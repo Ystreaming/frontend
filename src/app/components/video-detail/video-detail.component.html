@@ -24,22 +24,22 @@
         </div>
     </div>
     <article class="comments-container">
-        <ng-container *ngIf="videoData">
-            <div *ngIf="videoData?.comments" class="comments-block">
-                <p class="comments-block__count">{{ videoData.comments?.length || '0' }} commentaire(s)</p>
+        <ng-container *ngIf="commentData">
+            <div class="comments-block">
+                <p class="comments-block__count">{{ commentData.comments.length || '0' }} commentaire(s)</p>
                 <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Écrire un commentaire..." [(ngModel)]="commentText" class="comments-block__input"></textarea>
                 <button class="comments-block__add-button" [disabled]="!commentText">
                     Ajouter un commentaire
                 </button>
-                <div *ngFor="let comment of videoData?.comments" class="comments-block__comment">
+                <div *ngFor="let comment of commentData.comments" class="comments-block__comment">
                     <div class="comment">
                         <img [src]="comment.imageUsernameCommentaire" alt="Image de profil de l'utilisateur" class="comment__image">
                         <div class="comment__info">
                             <p class="comment__username">{{ comment.username }}</p>
-                            <p class="comment__date">{{ getTimeSince(comment.date) }}</p>
+                            <p class="comment__date">{{ getTimeSince(comment.createdAt) }}</p>
                         </div>
                         <div class="comment__content">
-                            <p class="comment__text">{{ comment.comment }}</p>
+                            <p class="comment__text">{{ comment.texte }}</p>
                         </div>
                     </div>
                 </div>

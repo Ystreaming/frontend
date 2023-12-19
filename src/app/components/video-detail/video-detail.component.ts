@@ -2,16 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import { VideoService } from 'src/app/services/video.service';
-import { ChannelService } from 'src/app/services/channel.service';
-import { IVideo } from 'src/app/models/video.model';
-import { IChannel } from 'src/app/models/channel.model';
-
-interface Comment {
-  username: string;
-  imageUsernameCommentaire: string;
-  comment: string;
-  date: string;
-}
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-video-detail',
@@ -20,21 +11,29 @@ interface Comment {
 })
 export class VideoDetailComponent implements OnInit {
   videoData: any;
-  channelData: any;
+  commentData: any;
   commentText: string = '';
   subscriberCount: number | undefined;
 
-  constructor(
-    private http: HttpClient, private route: ActivatedRoute,
-    private router: Router, private videoService: VideoService) {}
+  constructor(private route: ActivatedRoute, private videoService: VideoService) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const videoId = params.get('id')!;
-      this.videoService.getVideoById(videoId).subscribe(response => {
-        this.videoData = response
-        console.log(response);
-      });
+      this.loadVideo(videoId);
+      this.loadComments(videoId);
+    });
+  }
+
+  loadVideo(videoId: string) {
+    this.videoService.getVideoById(videoId).subscribe(response => {
+      this.videoData = response;
+    });
+  }
+
+  loadComments(videoId: string) {
+    this.videoService.getCommentsByVideoId(videoId).subscribe(response => {
+      this.commentData = response;
     });
   }
 
