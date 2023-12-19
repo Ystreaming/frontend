@@ -12,13 +12,13 @@
             <ng-container *ngFor="let video of videos">
                 <a [routerLink]="['/video', video.id]" class="video">
                     <div class="video__miniature-wrapper">
-                        <img [src]="video.miniatureVideo" [alt]="video.description" class="video__miniature">
+                        <img [src]="environment.apiUrl + '/' + video.img.path" [alt]="video.description" class="video__miniature">
                     </div>
                     <div class="video__channel">
                         <img [src]="video.imageProfilDescription" [alt]="video.streamerName" class="video__image-profil-channel">
                         <div class="video__streamer">
-                            <p class="video__category">{{ video.category }}</p>
-                            <p class="video__streamer-name">{{ video.streamerName }}</p>
+                            <p class="video__category">{{ video.idCategory.name }}</p>
+                            <p class="video__streamer-name">{{ video.idChannel.name }}</p>
                         </div>
                     </div>
                 </a>

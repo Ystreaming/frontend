@@ -1,29 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { VideoService } from 'src/app/services/video.service';
+import { environment } from 'src/environments/environment';
 
 interface Categorie {
   titre: string;
   image: string;
-}
-
-interface Comment {
-  username: string;
-  comment: string;
-  date: string;
-}
-
-interface Video {
-  id: number;
-  miniatureVideo: string;
-  imageProfilDescription: string;
-  videoName: string;
-  streamerName: string;
-  category: string;
-  description: string;
-  views: number;
-  uploadDate: string;
-  comments: Comment[];
 }
 
 @Component({
@@ -38,36 +19,21 @@ export class HomeVideosComponent implements OnInit {
     { titre: 'Podcast', image: 'assets/podcastv2.jpg' }
   ];
 
-  videos: Video[] = [];
-  videosByViews: Video[] = [];
+  videos: any = [];
+  videosByViews: any = [];
   hoveredIndex: number | null = null;
+  environment = environment;
 
-  constructor(private http: HttpClient) {}
+  constructor(private videoService: VideoService) {}
 
   ngOnInit(): void {
-    this.loadVideos();
-    this.loadVideosByViews();
+    this.loadVideos(6);
   }
 
-  loadVideos(): void {
-    this.http.get<Video[]>('/assets/video.json').subscribe(
-        data => {
-          this.videos = data;
-        },
-        error => {
-          console.error('Erreur lors du chargement des vidéos', error);
-        }
-    );
-  }
-
-  loadVideosByViews(): void {
-    this.http.get<Video[]>('/assets/video.json').subscribe(
-        data => {
-          this.videosByViews = data.sort((a, b) => b.views - a.views);
-        },
-        error => {
-          console.error('Erreur lors du chargement des vidéos triées par vues', error);
-        }
-    );
+  loadVideos(limit: number) {
+    this.videoService.getAllVideos(limit).subscribe(response => {
+      console.log(response);
+      this.videos = response.videos;
+    });
   }
 }
