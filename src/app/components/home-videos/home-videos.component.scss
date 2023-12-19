@@ -107,3 +107,18 @@
     grid-template-columns: 1fr 1fr !important;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .video-container {
+    grid-template-columns: 1fr !important;
+    .video {
+      margin: auto;
+    }
+  }
+  .video-wrapper {
+    padding-right: 0px !important;
+  }
+  .title-container {
+    display: block !important;
+  }
+}
