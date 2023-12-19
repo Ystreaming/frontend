@@ -24,9 +24,9 @@
         </div>
     </div>
     <article class="comments-container">
-        <ng-container *ngIf="commentData">
+        <ng-container *ngIf="videoData">
             <div class="comments-block">
-                <p class="comments-block__count">{{ commentData.comments.length || '0' }} commentaire(s)</p>
+                <p class="comments-block__count">{{ commentData !== null ? commentData.comments.length : '0' }} commentaire(s)</p>
                 <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Écrire un commentaire..." [(ngModel)]="commentText" class="comments-block__input"></textarea>
                 <button class="comments-block__add-button" [disabled]="!commentText">
                     Ajouter un commentaire

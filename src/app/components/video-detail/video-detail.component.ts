@@ -34,6 +34,7 @@ export class VideoDetailComponent implements OnInit {
   loadComments(videoId: string) {
     this.videoService.getCommentsByVideoId(videoId).subscribe(response => {
       this.commentData = response;
+      console.log(response);
     });
   }
 
