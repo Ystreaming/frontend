@@ -30,6 +30,7 @@ export class HomeVideosComponent implements OnInit {
   loadVideos(limit: number) {
     this.videoService.getAllVideos(limit).subscribe(response => {
       this.videos = response.videos;
+      console.log(response);
     });
   }
 
