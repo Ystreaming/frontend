@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import { VideoService } from 'src/app/services/video.service';
-import { CommentService } from 'src/app/services/comment.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-video-detail',
@@ -14,6 +13,7 @@ export class VideoDetailComponent implements OnInit {
   commentData: any;
   commentText: string = '';
   subscriberCount: number | undefined;
+  environment = environment;
 
   constructor(private route: ActivatedRoute, private videoService: VideoService) {}
 

@@ -1,6 +1,6 @@
 <section class="wrapper">
     <div *ngIf="videoData" class="video-block">
-        <img [src]="videoData.miniatureVideo" alt="Miniature" class="video-block__image">
+        <img [src]="environment.apiUrl + videoData.img.path" alt="Miniature" class="video-block__image">
         <h2 class="video-block__title">{{ videoData.title }}</h2>
         <div class="streamer-block">
             <div class="streamer-block__info">
