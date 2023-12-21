@@ -1,6 +1,7 @@
+import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ChannelService } from 'src/app/services/channel.service';
 
 @Component({
   selector: 'app-page-profil',
@@ -8,44 +9,22 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./page-profil.component.scss']
 })
 export class PageProfilComponent implements OnInit {
-  streamerName: string | null = null;
-  streamerData: any;
+  channelName: any;
+  channelData: any;
   videos: any[] = [];
+  environment = environment;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private channelService: ChannelService) { }
 
   ngOnInit() {
-    this.streamerName = this.route.snapshot.paramMap.get('streamerName');
-    if (this.streamerName) {
-      this.loadStreamerData(this.streamerName);
-    } else {
-      console.log("cette page n'existe pas");
-    }
+    this.channelName = this.route.snapshot.paramMap.get('streamerName');
+    this.loadChannel();
   }
 
-  loadStreamerData(streamerName: string) {
-    this.http.get<any>('assets/ystreameur.json').subscribe(data => {
-      const channels = data.channels;
-      const channel = channels.find((ch: any) => ch.name.toLowerCase() === streamerName.toLowerCase());
-      this.streamerData = channel;
-
-      if (channel) {
-        console.log('Streamer Data:', channel);
-        if (channel.videos && channel.videos.length) {
-          this.loadVideos(channel.videos);
-        } else {
-          console.log("Pas de vidéos pour ce streamer");
-        }
-      } else {
-        console.log("Streamer non trouvé");
-      }
-    });
-  }
-
-  loadVideos(videoIds: number[]) {
-    this.http.get<any>('assets/video.json').subscribe(data => {
-      this.videos = data.filter((video: any) => videoIds.includes(video.id));
-      console.log('Videos :', this.videos);
-    });
+  loadChannel() {
+    this.channelService.searchChannelByUsername(this.channelName).subscribe(response => {
+      this.channelData = response.channel[0];
+      console.log(this.channelData);
+    })
   }
 }

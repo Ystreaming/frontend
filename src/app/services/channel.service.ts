@@ -21,7 +21,7 @@ export class ChannelService {
     return this.http.post<IChannel>(this.apiUrl, channelData);
   }
 
-  getChannelById(id: number): Observable<IChannel> {
+  getChannelById(id: string): Observable<IChannel> {
     return this.http.get<IChannel>(`${this.apiUrl}/${id}`);
   }
 
@@ -31,5 +31,9 @@ export class ChannelService {
 
   deleteChannelById(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  searchChannelByUsername(username: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/search/${username}`);
   }
 }

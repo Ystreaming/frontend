@@ -38,4 +38,8 @@ export class UserService {
     return this.http.get<any>(`${this.apiUrl}/sub/${id}`);
   }
   
+  getUserByUsername(username: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/username/${username}`);
+  }
+
 }
