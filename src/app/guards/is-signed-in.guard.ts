@@ -1,21 +1,18 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { LocalStorageService } from "../services/local-storage.service";
+import { inject } from "@angular/core";
+import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { Observable } from "rxjs";
+import { UserService } from "../services/user.service";
 
-@Injectable({
-  providedIn: 'root'
-})
-export class IsSignedInGuard implements CanActivate {
-  constructor(private localStorageService: LocalStorageService, private router: Router) {}
+export const IsSignedInGuard: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+):
+  Observable<boolean | UrlTree>
+  | Promise<boolean | UrlTree>
+  | boolean
+  | UrlTree => {
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const token = this.localStorageService.get('token');
-
-    if (token === null) {
-      this.router.navigate(['/login']);
-    }
-
-    return true;
-  }
+    return inject(UserService).isAuthenticated()
+      ? true
+      : inject(Router).createUrlTree(['/login']);
 }

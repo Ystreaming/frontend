@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class UserService {
 
   private apiUrl = `${environment.apiUrl}/users`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) { }
 
   createUser(user: IUser): Observable<IUser> {
     return this.http.post<IUser>(this.apiUrl, user);
@@ -39,5 +40,9 @@ export class UserService {
 
   getSubByUser(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/sub/${id}`);
+  }
+
+  isAuthenticated(): boolean {
+    return this.localStorageService.get('token') !== null;
   }
 }
