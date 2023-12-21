@@ -49,4 +49,12 @@ export class VideoService {
     }
     return this.http.get<any>(`${this.apiUrl}/recommendation`);
   }
+
+  getMostViewed(limit?: number): Observable<any> {
+    let url = this.apiUrl;
+    if (limit !== undefined) {
+      url += `?limit=${limit};`
+    }
+    return this.http.get<any>(`${this.apiUrl}/mostviewed`);
+  }
 }

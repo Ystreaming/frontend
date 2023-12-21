@@ -9,7 +9,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home-videos.component.scss']
 })
 export class HomeVideosComponent implements OnInit {
-  videos: any = [];
+  recommandations: any = [];
+  mostviewed: any = [];
   videosByViews: any = [];
   hoveredIndex: number | null = null;
   categories: any = [];
@@ -24,8 +25,11 @@ export class HomeVideosComponent implements OnInit {
 
   loadVideos(limit: number) {
     this.videoService.getRecommendation(limit).subscribe(response => {
-      this.videos = response;
-      console.log(response);
+      this.recommandations = response;
+    });
+
+    this.videoService.getMostViewed(limit).subscribe(response => {
+      this.mostviewed = response;
     });
   }
 
