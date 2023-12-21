@@ -1,5 +1,8 @@
+import { IComment } from './../../models/comment.model';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import { CommentService } from 'src/app/services/comment.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { VideoService } from 'src/app/services/video.service';
 import { environment } from 'src/environments/environment';
 
@@ -9,19 +12,23 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./video-detail.component.scss']
 })
 export class VideoDetailComponent implements OnInit {
+  videoId: string = "";
   videoData: any;
   commentData: any;
   commentText: string = '';
   subscriberCount: number | undefined;
   environment = environment;
 
-  constructor(private route: ActivatedRoute, private videoService: VideoService) {}
+  constructor(
+    private route: ActivatedRoute, private videoService: VideoService,
+    private commentService: CommentService, private localStorageService: LocalStorageService,
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const videoId = params.get('id')!;
-      this.loadVideo(videoId);
-      this.loadComments(videoId);
+      this.videoId = params.get('id')!;
+      this.loadVideo(this.videoId);
+      this.loadComments(this.videoId);
     });
   }
 
@@ -35,6 +42,17 @@ export class VideoDetailComponent implements OnInit {
     this.videoService.getCommentsByVideoId(videoId).subscribe(response => {
       this.commentData = response;
     });
+  }
+
+  addComment() {
+    let data = {
+      texte: this.commentText,
+      idUser: this.localStorageService.getUserDetails(),
+      idVideo: this.videoId
+    };
+    this.commentService.createComment(data).subscribe(response => {
+      window.location.reload();
+    })
   }
 
   getTimeSince(date: string): string {

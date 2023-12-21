@@ -28,7 +28,7 @@
             <div class="comments-block">
                 <p class="comments-block__count">{{ commentData === null ? '0' : commentData.comments.length }} commentaire(s)</p>
                 <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Écrire un commentaire..." [(ngModel)]="commentText" class="comments-block__input"></textarea>
-                <button class="comments-block__add-button" [disabled]="!commentText">
+                <button class="comments-block__add-button" [disabled]="!commentText" (click)="addComment()">
                     Ajouter un commentaire
                 </button>
                 <div *ngIf="commentData !== null">

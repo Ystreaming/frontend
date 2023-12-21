@@ -1,8 +1,9 @@
 export interface IComment {
-    id: number,
+    id: string,
     like: number,
     dislike: number,
     texte: string,
     createdAt: string,
-    idUser: number
+    idUser: string,
+    idVideo: string,
 }
