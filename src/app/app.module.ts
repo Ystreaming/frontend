@@ -19,6 +19,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { PageProfilComponent } from './components/page-profil/page-profil.component';
 import { ProfilPageComponent } from './pages/profil-page/profil-page.component';
 import { NotifierModule } from 'angular-notifier';
+import { UserProfilePopupComponent } from './components/user-profile-popup/user-profile-popup.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NotifierModule } from 'angular-notifier';
     RegisterPageComponent,
     PageProfilComponent,
     ProfilPageComponent,
+    UserProfilePopupComponent,
   ],
   imports: [
     BrowserModule,

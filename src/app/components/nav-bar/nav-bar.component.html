@@ -1,3 +1,4 @@
+<app-user-profile-popup #userProfilePopup></app-user-profile-popup>
 <nav class="nav-bar">
     <div class="nav-bar__block nav-bar__block--left">
         <svg width="90" height="20" viewBox="0 0 90 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo">
@@ -26,8 +27,8 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24" fill="none" class="notification">
             <path d="M10.1538 24C11.5076 24 12.6153 22.8923 12.6153 21.5385H7.69223C7.69223 22.8923 8.79992 24 10.1538 24ZM17.5384 16.6154V10.4615C17.5384 6.68308 15.5322 3.52 11.9999 2.68308V1.84615C11.9999 0.824615 11.1753 0 10.1538 0C9.13223 0 8.30762 0.824615 8.30762 1.84615V2.68308C4.78762 3.52 2.76916 6.67077 2.76916 10.4615V16.6154L0.307617 19.0769V20.3077H19.9999V19.0769L17.5384 16.6154ZM15.0768 17.8462H5.23069V10.4615C5.23069 7.40923 7.08916 4.92308 10.1538 4.92308C13.2184 4.92308 15.0768 7.40923 15.0768 10.4615V17.8462Z" fill="#F4EDDE"/>
         </svg>
-        <div class="nav-bar__profile-image">
-            <img [src]="imagePath" [alt]="imageAltText"  class="nav-bar__profile-image-img">
+        <div class="nav-bar__profile-image" (click)="userProfilePopup.openPopup()">
+            <img [src]="imagePath" [alt]="imageAltText" class="nav-bar__profile-image-img">
         </div>
     </div>
 </nav>

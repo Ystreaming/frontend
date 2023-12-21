@@ -1,0 +1,18 @@
+<div *ngIf="isOpen" class="popup">
+    <div class="popup__content">
+        <div class="popup__header">
+            <img [src]="imagePath" [alt]="imageAltText" class="popup__image">
+            <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg" (click)="closePopup()" class="popup__close-button">
+                <rect x="43.1748" y="49.4975" width="60" height="10" rx="5" transform="rotate(-135 43.1748 49.4975)" fill="#2B2B2B"/>
+                <rect y="42.6778" width="60" height="10" rx="5" transform="rotate(-45 0 42.6778)" fill="#2B2B2B"/>
+            </svg>
+        </div>
+        <div class="popup__body">
+            <p class="popup__username">Nom d'utilisateur</p>
+            <p class="popup__followers">105k abonnées</p>
+            <button (click)="goToProfile()" class="popup__button">Mon Compte</button>
+            <button (click)="logout()" class="popup__button">Déconnexion</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="isOpen" class="overlay" (click)="closePopup()"></div>
