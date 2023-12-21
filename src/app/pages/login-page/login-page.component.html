@@ -1,0 +1,30 @@
+<section class="container">
+    <div class="form">
+        <div class="formTitle">
+            <h3 class="h3Login">Connexion à votre compte</h3>
+            <span class="line"></span>
+        </div>
+        <div class="login-container">
+            <form action="/submit-your-login-form" (ngSubmit)="submitLogin()" method="post" class="form">
+                <div class="form-group">
+                    <label for="text" class="userName">Nom d'utilisateur</label>
+                    <input type="text" id="text" name="text" required class="inputName" [(ngModel)]="username" (focus)="onFocus($event)" (blur)="onBlur($event)">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="userPassword">Mot de passe</label>
+                    <input type="password" id="password" name="password" required class="inputPassword"  [(ngModel)]="password" (focus)="onFocus($event)" (blur)="onBlur($event)">
+                </div>
+                <button type="submit" class="button">Connexion</button>
+            </form>
+        </div>
+        <p>
+            Vous n'avez pas de compte ?
+            <a href="/register">
+                Inscrivez-vous
+            </a>
+        </p>
+    </div>
+    <div class="image">
+        <img src="assets/Image.jpg" alt="image d'un stade e-sport">
+    </div>
+</section>

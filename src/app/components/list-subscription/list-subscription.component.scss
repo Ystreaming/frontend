@@ -1,0 +1,73 @@
+.subscription-list {
+  position: sticky;
+  top: 145px;
+  padding-top: 0;
+  padding-left: 25px;
+
+  &__title {
+
+  }
+
+  &__items {
+    list-style: none;
+    overflow-y: scroll;
+    height: 60vh;
+    display: grid;
+    gap: 10px;
+    padding: 0;
+  }
+
+  &__item {
+    min-height: 58.45px;
+    max-height: 58.45px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  &__streamer-name,
+  &__viewer-number {
+    display: flex;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    color: #EC567C;
+
+    &--less {
+      background: none;
+      border: none;
+      color: #EC567C;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .subscription-list {
+    .subscription-list__title,
+    .subscription-list__streamer-name,
+    .subscription-list__viewer-number,
+    .subscription-list__buttons{
+      display: none;
+    }
+  }
+}
+

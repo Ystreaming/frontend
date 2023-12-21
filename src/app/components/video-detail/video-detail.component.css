@@ -1,0 +1,138 @@
+.video {
+  width: 100%;
+}
+
+.videoTitle {
+  margin-top: 16px;
+}
+
+.streamer {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoStreamer {
+  display: flex;
+  gap: 24px;
+}
+
+.imageStreamer {
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+
+.streamerNameAndFollowers {
+  display: grid;
+  gap: 10px;
+}
+.streamerNameAndFollowers p {
+  margin: 0;
+}
+
+.followButton {
+  border-radius: 8px;
+  background: #EC567C;
+  padding: 16px 32px;
+  color: white;
+  border: none;
+}
+
+.description {
+  display: grid;
+  gap: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.description h3 {
+  margin: 0;
+}
+.description p {
+  margin: 0;
+}
+.description .descriptionTitle {
+  color: #EC567C;
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.description .viewsAndDate {
+  display: flex;
+  gap: 20px;
+}
+
+.commentaires {
+  padding-right: 20%;
+}
+.commentaires p {
+  margin: 0;
+}
+.commentaires .nombreCommentaire {
+  color: #EC567C;
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.commentaires .addCommentaire {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background: none;
+  border: none;
+  color: white;
+  width: 100%;
+  border-bottom: 1px solid white;
+}
+.commentaires .buttonComment {
+  border-radius: 8px;
+  background: #EC567C;
+  padding: 16px 32px;
+  color: white;
+  border: none;
+  margin-bottom: 36px;
+}
+.commentaires .buttonComment:disabled {
+  background-color: #cccccc;
+  color: #666666;
+}
+.commentaires .comment {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 36px;
+}
+.commentaires .imageComment {
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+.commentaires .comment-content {
+  display: grid;
+  gap: 8px;
+}
+.commentaires .infoComment {
+  display: flex;
+  gap: 10px;
+}
+.commentaires .infoComment .comment-username {
+  color: #EC567C;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+/*# sourceMappingURL=video-detail.component.css.map */

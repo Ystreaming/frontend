@@ -1,0 +1,38 @@
+<section class="container">
+    <div class="form">
+        <div class="formTitle">
+            <h3 class="h3title">Création du compte</h3>
+            <span class="line"></span>
+        </div>
+        <div class="login-container">
+            <form action="/submit-your-register-form" (ngSubmit)="submitForm()" method="post" class="form">
+                <div class="form-group">
+                    <label for="username" class="userName">Nom d'utilisateur</label>
+                    <input type="text" id="username" name="username" required class="inputName" [(ngModel)]="user.username" (focus)="onFocus($event)" (blur)="onBlur($event)">
+                </div>
+                <div class="form-group">
+                    <label for="dateOfBirth" class="userBirthday">Date de naissance</label>
+                    <input type="date" id="dateOfBirth" name="dateOfBirth" required class="inputBirthday" [(ngModel)]="user.dateOfBirth" (focus)="onFocus($event)" (blur)="onBlur($event)">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="userEmail">Adresse e-mail</label>
+                    <input type="email" id="email" name="email" required class="inputEmail" [(ngModel)]="user.email" (focus)="onFocus($event)" (blur)="onBlur($event)">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="userPassword">Mot de passe</label>
+                    <input type="password" id="password" name="password" required class="inputPassword" [(ngModel)]="user.password" (focus)="onFocus($event)" (blur)="onBlur($event)">
+                </div>
+                <button type="submit" class="button">S'inscrire</button>
+            </form>
+        </div>
+        <p>
+            Vous avez déjà un compte ?
+            <a href="/login">
+                Connectez-vous
+            </a>
+        </p>
+    </div>
+    <div class="image">
+        <img src="assets/Image.jpg" alt="image d'un stade e-sport">
+    </div>
+</section>

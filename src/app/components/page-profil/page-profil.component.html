@@ -1,0 +1,21 @@
+<section class="container">
+    <div class="infos" *ngIf="channelData">
+        <img [src]="environment.apiUrl + channelData.image.path" [alt]="channelData.username" class="imageProfilNavBar">
+        <div>
+            <h3 class="h3">{{ channelData.name }}</h3>
+            <div>
+                <p>{{ channelData.subNumber | number }} abonnés - {{ channelData.idVideos.length }} vidéos</p>
+            </div>
+            <p>{{ channelData.description }}</p>
+            <button class="button">S'abonner</button>
+        </div>
+    </div>
+    <div class="videos" *ngIf="channelData.idVideos.length">
+        <div *ngFor="let video of channelData.idVideos">
+            <a [routerLink]="['/video', video._id]">
+                <img [src]="environment.apiUrl + video.img.path" [alt]="video.title" class="miniatureVideo">
+                <h3 class="titleVideo">{{ video.title }}</h3>
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,132 @@
+%user-label-style {
+  color: #F4EDDE;
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+%user-input-style {
+  background: none;
+  border-bottom: 1px solid #F4EDDE;
+  border-right: none;
+  color: #F4EDDE;
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.userName, .userPassword {
+  @extend %user-label-style;
+}
+
+.inputName, .inputPassword {
+  @extend %user-input-style;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding-left: 30px;
+  .form {
+    margin: auto;
+    .formTitle {
+      display: grid;
+      gap: 27px;
+      .h3Login {
+        color: #F4EDDE;
+        text-align: center;
+        font-family: Montserrat, sans-serif;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin: 0;
+      }
+      .line {
+        display: block;
+        width: 240px;
+        height: 5px;
+        background-color: #EC567C;
+      }
+    }
+    .login-container {
+      margin-top: 48px;
+      .form {
+        display: grid;
+        gap: 32px;
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .button {
+          display: flex;
+          padding: 16px 32px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          align-self: stretch;
+          border-radius: 8px;
+          background-color: #EC567C;
+          color: #F4EDDE;
+          font-family: Montserrat, sans-serif;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          border: none;
+        }
+      }
+    }
+    p {
+      color: #F4EDDE;
+      font-family: Montserrat, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    a {
+      color: #EC567C;
+      font-family: Montserrat, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+  .image {
+    max-width: 50vw;
+    max-height: 100vh;
+    img {
+      height: 100vh;
+      width: 100%;
+    }
+  }
+}
+
+input:focus {
+  color: #F4EDDE;
+  border-bottom-color: #EC567C;
+  outline: none;
+}
+
+
+@media screen and (max-width: 800px) {
+  .container {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    height: 100vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    .image {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<section class="wrapper">
+    <div *ngIf="videoData" class="video-block">
+        <img [src]="environment.apiUrl + videoData.img.path" alt="Miniature" class="video-block__image">
+        <h2 class="video-block__title">{{ videoData.title }}</h2>
+        <div class="streamer-block">
+            <div class="streamer-block__info">
+                <img [src]="environment.apiUrl + videoData.idChannel.image.path" alt="Miniature" class="streamer-block__profile-image">
+                <div class="streamer-block__name-followers">
+                    <p><a [routerLink]="['/channel', videoData.idChannel.name]" class="streamer-block__name">{{ videoData.idChannel.name }}</a></p>
+                    <p class="streamer-block__followers">{{ videoData.idChannel.subNumber | number }} abonnés</p>
+                </div>
+            </div>
+            <button class="streamer-block__follow-button">
+                S'abonner
+            </button>
+        </div>
+        <div class="description-block">
+            <h3 class="description-block__title">Description</h3>
+            <div class="description-block__views-date">
+                <p class="description-block__views">{{ videoData.view }} vues</p>
+                <p class="description-block__date">{{ getTimeSince(videoData.time) }}</p>
+            </div>
+            <p class="description-block__text">{{ videoData.description }}</p>
+        </div>
+    </div>
+    <article class="comments-container">
+        <ng-container *ngIf="videoData">
+            <div class="comments-block">
+                <p class="comments-block__count">{{ commentData === null ? '0' : commentData.comments.length }} commentaire(s)</p>
+                <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Écrire un commentaire..." [(ngModel)]="commentText" class="comments-block__input"></textarea>
+                <button class="comments-block__add-button" [disabled]="!commentText" (click)="addComment()">
+                    Ajouter un commentaire
+                </button>
+                <div *ngIf="commentData !== null">
+                    <div *ngFor="let comment of commentData.comments" class="comments-block__comment">
+                        <div class="comment">
+                            <img [src]="environment.apiUrl + comment.idUser.profileImage.path" alt="Image de profil de l'utilisateur" class="comment__image">
+                            <div class="comment__info">
+                                <p class="comment__username">{{ comment.idUser.username }}</p>
+                                <p class="comment__date">{{ getTimeSince(comment.createdAt) }}</p>
+                            </div>
+                            <div class="comment__content">
+                                <p class="comment__text">{{ comment.texte }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <app-recommended-video></app-recommended-video>
+    </article>
+</section>
