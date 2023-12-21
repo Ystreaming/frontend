@@ -7,7 +7,7 @@
                 <img [src]="environment.apiUrl + videoData.idChannel.image.path" alt="Miniature" class="streamer-block__profile-image">
                 <div class="streamer-block__name-followers">
                     <p><a [routerLink]="['/channel', videoData.streamerName]" class="streamer-block__name">{{ videoData.idChannel.name }}</a></p>
-                    <p class="streamer-block__followers">{{ subscriberCount | number }} abonnés</p>
+                    <p class="streamer-block__followers">{{ videoData.idChannel.subNumber | number }} abonnés</p>
                 </div>
             </div>
             <button class="streamer-block__follow-button">
