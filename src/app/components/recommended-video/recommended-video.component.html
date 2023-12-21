@@ -2,15 +2,15 @@
     <h3 class="video-container__title">Vidéos recommandées</h3>
     <div class="video-container__videos">
         <ng-container *ngFor="let video of videos">
-            <a [routerLink]="['/video', video.id]" class="video-link">
+            <a [routerLink]="['/video', video._id]" class="video-link">
                 <div class="video-link__thumbnail-wrapper">
-                    <img [src]="video.miniatureVideo" [alt]="video.description" class="video-link__thumbnail">
+                    <img [src]="environment.apiUrl + video.img.path" [alt]="video.description" class="video-link__thumbnail">
                 </div>
                 <div class="video-link__channel">
-                    <img [src]="video.imageProfilDescription" [alt]="video.streamerName" class="video-link__channel-profile">
+                    <img [src]="environment.apiUrl + video.idChannel.image.path" [alt]="video.streamerName" class="video-link__channel-profile">
                     <div class="video-link__channel-details">
-                        <p class="video-link__name">{{ video.videoName }}</p>
-                        <p class="video-link__streamer-name">{{ video.streamerName }}</p>
+                        <p class="video-link__name">{{ video.title }}</p>
+                        <p class="video-link__streamer-name">{{ video.idChannel.name }}</p>
                     </div>
                 </div>
             </a>
