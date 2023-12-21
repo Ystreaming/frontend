@@ -3,11 +3,6 @@ import { CategoryService } from 'src/app/services/category.service';
 import { VideoService } from 'src/app/services/video.service';
 import { environment } from 'src/environments/environment';
 
-interface Categorie {
-  titre: string;
-  image: string;
-}
-
 @Component({
   selector: 'app-home-videos',
   templateUrl: './home-videos.component.html',
@@ -28,8 +23,8 @@ export class HomeVideosComponent implements OnInit {
   }
 
   loadVideos(limit: number) {
-    this.videoService.getAllVideos(limit).subscribe(response => {
-      this.videos = response.videos;
+    this.videoService.getRecommendation(limit).subscribe(response => {
+      this.videos = response;
       console.log(response);
     });
   }

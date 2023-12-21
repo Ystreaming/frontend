@@ -41,4 +41,12 @@ export class VideoService {
   getCommentsByVideoId(id: string): Observable<IComment[]> {
     return this.http.get<IComment[]>(`${this.apiUrl}/comments/${id}`);
   }
+
+  getRecommendation(limit?: number): Observable<any> {
+    let url = this.apiUrl;
+    if (limit !== undefined) {
+        url += `?limit=${limit}`;
+    }
+    return this.http.get<any>(`${this.apiUrl}/recommendation`);
+  }
 }
