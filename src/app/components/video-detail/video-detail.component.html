@@ -26,20 +26,22 @@
     <article class="comments-container">
         <ng-container *ngIf="videoData">
             <div class="comments-block">
-                <p class="comments-block__count">{{ commentData !== null ? commentData.comments.length : '0' }} commentaire(s)</p>
+                <p class="comments-block__count">{{ commentData === null ? '0' : commentData.comments.length }} commentaire(s)</p>
                 <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Écrire un commentaire..." [(ngModel)]="commentText" class="comments-block__input"></textarea>
                 <button class="comments-block__add-button" [disabled]="!commentText">
                     Ajouter un commentaire
                 </button>
-                <div *ngFor="let comment of commentData.comments" class="comments-block__comment">
-                    <div class="comment">
-                        <img [src]="environment.apiUrl + comment.idUser.profileImage.path" alt="Image de profil de l'utilisateur" class="comment__image">
-                        <div class="comment__info">
-                            <p class="comment__username">{{ comment.idUser.username }}</p>
-                            <p class="comment__date">{{ getTimeSince(comment.createdAt) }}</p>
-                        </div>
-                        <div class="comment__content">
-                            <p class="comment__text">{{ comment.texte }}</p>
+                <div *ngIf="commentData !== null">
+                    <div *ngFor="let comment of commentData.comments" class="comments-block__comment">
+                        <div class="comment">
+                            <img [src]="environment.apiUrl + comment.idUser.profileImage.path" alt="Image de profil de l'utilisateur" class="comment__image">
+                            <div class="comment__info">
+                                <p class="comment__username">{{ comment.idUser.username }}</p>
+                                <p class="comment__date">{{ getTimeSince(comment.createdAt) }}</p>
+                            </div>
+                            <div class="comment__content">
+                                <p class="comment__text">{{ comment.texte }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
