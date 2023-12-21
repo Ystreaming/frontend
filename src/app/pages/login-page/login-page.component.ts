@@ -1,8 +1,8 @@
 import { Component, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { UserService } from 'src/app/services/user.service';
 import { NotifierService } from 'angular-notifier';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -14,7 +14,7 @@ export class LoginPageComponent {
   username: string = '';
   password: string = '';
   constructor(
-    private renderer: Renderer2, private userService: UserService,
+    private renderer: Renderer2, private authService: AuthService,
     private localStorageService: LocalStorageService, private router: Router,
     private notifier: NotifierService
     ) {}
@@ -38,7 +38,7 @@ export class LoginPageComponent {
   }
 
   submitLogin(): void {
-    this.userService.loginUser(this.username, this.password).subscribe(token => {
+    this.authService.loginUser(this.username, this.password).subscribe(token => {
       this.localStorageService.set('token', token);
       this.notifier.notify('success', 'Vous vous êtes connecté avec succès !');
       return this.router.navigate(['/']);

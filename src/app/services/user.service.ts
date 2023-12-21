@@ -18,10 +18,6 @@ export class UserService {
     return this.http.post<IUser>(this.apiUrl, user);
   }
 
-  loginUser(username: string, password: string): Observable<string> {
-    return this.http.post<string>(`${this.apiUrl}/login`, { username, password });
-  }
-
   getAllUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>(this.apiUrl);
   }
@@ -41,8 +37,5 @@ export class UserService {
   getSubByUser(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/sub/${id}`);
   }
-
-  isAuthenticated(): boolean {
-    return this.localStorageService.get('token') !== null;
-  }
+  
 }
