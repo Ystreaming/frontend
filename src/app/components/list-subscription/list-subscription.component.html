@@ -4,9 +4,8 @@
     </h3>
     <ul class="subscription-list__items">
         <li class="subscription-list__item" *ngFor="let sub of subscribers">
-            <img class="subscription-list__image" [src]="sub.image.path" [alt]="">
+            <img class="subscription-list__image" [src]="environment.apiUrl + sub.image.path" [alt]="">
             <p class="subscription-list__streamer-name">{{ sub.name }}</p>
-            <p class="subscription-list__viewer-number">30k</p>
         </li>
     </ul>
     <div class="subscription-list__buttons">
