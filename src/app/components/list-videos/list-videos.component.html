@@ -1,0 +1,25 @@
+<section class="container">
+    <div>
+        <div class="title-container">
+            <h3 class="h3">
+                {{ title }}
+            </h3>
+        </div>
+        <article class="video-container video-wrapper">
+            <ng-container *ngFor="let video of videos">
+                <a [routerLink]="['/video', video._id]" class="video">
+                    <div class="video__miniature-wrapper">
+                        <img [src]="environment.apiUrl + video.img.path" [alt]="video.description" class="video__miniature">
+                    </div>
+                    <div class="video__channel">
+                        <img [src]="environment.apiUrl + video.idChannel.image.path" [alt]="video.streamerName" class="video__image-profil-channel">
+                        <div class="video__streamer">
+                            <p class="video__category">{{ video.title }}</p>
+                            <p class="video__streamer-name">{{ video.idChannel.name }}</p>
+                        </div>
+                    </div>
+                </a>
+            </ng-container>
+        </article>
+    </div>
+</section>

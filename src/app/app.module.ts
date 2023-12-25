@@ -19,6 +19,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { PageProfilComponent } from './components/page-profil/page-profil.component';
 import { ProfilPageComponent } from './pages/profil-page/profil-page.component';
 import { NotifierModule } from 'angular-notifier';
+import { ListVideosComponent } from './components/list-videos/list-videos.component';
+import { FollowingPageComponent } from './pages/following-page/following-page.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { NotifierModule } from 'angular-notifier';
     RegisterPageComponent,
     PageProfilComponent,
     ProfilPageComponent,
+    ListVideosComponent,
+    FollowingPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { LoginPageComponent} from "./pages/login-page/login-page.component";
 import { RegisterPageComponent} from "./pages/register-page/register-page.component";
 import { ProfilPageComponent} from "./pages/profil-page/profil-page.component";
 import { IsNotSignedInGuard } from './guards/is-not-signed-in.guard';
+import { FollowingPageComponent } from './pages/following-page/following-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent }, // Route pour la page d'accueil
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent, canActivate: [IsNotSignedInGuard] }, // Route pour la connexion
   { path: 'register', component: RegisterPageComponent, canActivate: [IsNotSignedInGuard] }, // Route pour l'inscription
   { path: 'channel/:streamerName', component: ProfilPageComponent }, // Route pour la chaine
+  { path: 'following', component: FollowingPageComponent }, // Route pour la liste des vidéos de vos chaînes préférées
 ];
 
 @NgModule({
