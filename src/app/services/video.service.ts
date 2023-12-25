@@ -57,4 +57,8 @@ export class VideoService {
     }
     return this.http.get<any>(`${this.apiUrl}/mostviewed`);
   }
+
+  getVideosByCategory(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/category/${id}`);
+  }
 }
