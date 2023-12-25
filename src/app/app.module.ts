@@ -21,6 +21,7 @@ import { ProfilPageComponent } from './pages/profil-page/profil-page.component';
 import { NotifierModule } from 'angular-notifier';
 import { ListVideosComponent } from './components/list-videos/list-videos.component';
 import { FollowingPageComponent } from './pages/following-page/following-page.component';
+import { MostViewedPageComponent } from './pages/most-viewed-page/most-viewed-page.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FollowingPageComponent } from './pages/following-page/following-page.co
     ProfilPageComponent,
     ListVideosComponent,
     FollowingPageComponent,
+    MostViewedPageComponent,
   ],
   imports: [
     BrowserModule,

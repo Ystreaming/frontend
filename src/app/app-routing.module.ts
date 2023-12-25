@@ -7,6 +7,7 @@ import { RegisterPageComponent} from "./pages/register-page/register-page.compon
 import { ProfilPageComponent} from "./pages/profil-page/profil-page.component";
 import { IsNotSignedInGuard } from './guards/is-not-signed-in.guard';
 import { FollowingPageComponent } from './pages/following-page/following-page.component';
+import { MostViewedPageComponent } from './pages/most-viewed-page/most-viewed-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent }, // Route pour la page d'accueil
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterPageComponent, canActivate: [IsNotSignedInGuard] }, // Route pour l'inscription
   { path: 'channel/:streamerName', component: ProfilPageComponent }, // Route pour la chaine
   { path: 'following', component: FollowingPageComponent }, // Route pour la liste des vidéos de vos chaînes préférées
+  { path: 'most-viewed', component: MostViewedPageComponent }, // Route pour la liste des vidéos les plus vues
 ];
 
 @NgModule({
