@@ -22,6 +22,7 @@ import { NotifierModule } from 'angular-notifier';
 import { ListVideosComponent } from './components/list-videos/list-videos.component';
 import { FollowingPageComponent } from './pages/following-page/following-page.component';
 import { MostViewedPageComponent } from './pages/most-viewed-page/most-viewed-page.component';
+import { VideosByCategoryPageComponent } from './pages/videos-by-category-page/videos-by-category-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MostViewedPageComponent } from './pages/most-viewed-page/most-viewed-pa
     ListVideosComponent,
     FollowingPageComponent,
     MostViewedPageComponent,
+    VideosByCategoryPageComponent,
   ],
   imports: [
     BrowserModule,

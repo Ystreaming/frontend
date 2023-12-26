@@ -43,22 +43,26 @@ export class VideoService {
   }
 
   getRecommendation(limit?: number): Observable<any> {
-    let url = this.apiUrl;
+    let params = "";
     if (limit !== undefined) {
-        url += `?limit=${limit}`;
+        params += `?limit=${limit}`;
     }
-    return this.http.get<any>(`${this.apiUrl}/recommendation`);
+    return this.http.get<any>(`${this.apiUrl}/recommendation${params}`);
   }
 
   getMostViewed(limit?: number): Observable<any> {
-    let url = this.apiUrl;
+    let params = "";
     if (limit !== undefined) {
-      url += `?limit=${limit};`
+        params += `?limit=${limit}`;
     }
-    return this.http.get<any>(`${this.apiUrl}/mostviewed`);
+    return this.http.get<any>(`${this.apiUrl}/mostviewed${params}`);
   }
 
-  getVideosByCategory(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/category/${id}`);
+  getVideosByCategory(id: string, limit: number): Observable<any> {
+    let params = "";
+    if (limit !== undefined) {
+        params += `?limit=${limit}`;
+    }
+    return this.http.get<any>(`${this.apiUrl}/category/${id}${params}`);
   }
 }
