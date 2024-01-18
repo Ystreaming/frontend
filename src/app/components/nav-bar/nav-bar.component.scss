@@ -60,6 +60,20 @@
       border-radius: 50px;
     }
   }
+
+  &__login {
+    padding: 8px 16px;
+    gap: 10px;
+    border-radius: 8px;
+    background: #EC567C;
+    border: none;
+    color: #F4EDDE;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
 }
 
 @media screen and (max-width: 600px) {
