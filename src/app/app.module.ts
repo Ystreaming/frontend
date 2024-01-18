@@ -23,6 +23,7 @@ import { ListVideosComponent } from './components/list-videos/list-videos.compon
 import { FollowingPageComponent } from './pages/following-page/following-page.component';
 import { MostViewedPageComponent } from './pages/most-viewed-page/most-viewed-page.component';
 import { VideosByCategoryPageComponent } from './pages/videos-by-category-page/videos-by-category-page.component';
+import { SearchComponent } from './pages/search/search.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { VideosByCategoryPageComponent } from './pages/videos-by-category-page/v
     FollowingPageComponent,
     MostViewedPageComponent,
     VideosByCategoryPageComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

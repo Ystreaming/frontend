@@ -65,4 +65,12 @@ export class VideoService {
     }
     return this.http.get<any>(`${this.apiUrl}/category/${id}${params}`);
   }
+
+  getVideosByName(name: string | null, limit: number): Observable<any> {
+    let params = "";
+    if (limit !== undefined) {
+        params += `?limit=${limit}`;
+    }
+    return this.http.get<any>(`${this.apiUrl}/search/${name}${params}`);
+  }
 }
