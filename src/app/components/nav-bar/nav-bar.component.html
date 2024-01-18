@@ -20,7 +20,8 @@
         </a>
     </div>
     <div class="nav-bar__block nav-bar__block--center">
-        <input type="search" id="searchInput" class="nav-bar__search-input" placeholder="Rechercher">
+        <input type="search" id="searchInput" class="nav-bar__search-input" placeholder="Rechercher"
+            [(ngModel)]="searchTerm" (keyup)="onSearchEnter($event)">
     </div>
     <div class="nav-bar__block nav-bar__block--right">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24" fill="none" class="notification">
