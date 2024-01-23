@@ -12,6 +12,6 @@ npm install
 
 # Construisez votre application (si nécessaire)
 # Par exemple, pour une application Node.js/React :
-npm run start
+pm2 restart all
 
 echo "Déploiement terminé avec succès"
