@@ -13,6 +13,7 @@ export class NavBarComponent implements OnInit {
   environment = environment;
   user: any;
   searchTerm: string = '';
+  showDropdown = false;
 
   constructor(private localStorageService: LocalStorageService, private userService: UserService, private router: Router) {}
 
@@ -41,4 +42,17 @@ export class NavBarComponent implements OnInit {
       this.router.navigate(['/search', this.searchTerm]);
     }
   }
+
+  toggleDropdown(): void {
+    console.log("clique sur l'image ok")
+    this.showDropdown = !this.showDropdown;
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.user = null;
+    this.showDropdown = false;
+    this.router.navigate(['/login']);
+  }
+
 }
