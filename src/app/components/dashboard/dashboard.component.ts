@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 export class DashboardComponent implements OnInit {
   userStats = {
     numberOfVideos: 0,
+    totalViews: 0,
+    totalSub: 0,
   };
   environment = environment;
 
@@ -22,12 +24,16 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const userId = '65afc4c36e416a8be03943ef'; // ID utilisateur statique
+    const userId = '65afc4c36e416a8be03943ef';
 
     this.channelService.getChannelById(userId).subscribe(channelData => {
       if (channelData) {
         this.userStats.numberOfVideos = channelData.idVideos.length;
       }
+    });
+
+    this.userService.getSubByUser(userId).subscribe(subCount => {
+      this.userStats.totalSub = subCount;
     });
   }
 }

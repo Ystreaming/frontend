@@ -3,6 +3,7 @@ import { ChannelService } from 'src/app/services/channel.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { IVideo } from 'src/app/models/video.model';
 
 @Component({
   selector: 'app-content',
@@ -14,6 +15,7 @@ export class ContentComponent implements OnInit {
   videos: any[] = [];
   environment = environment;
   videoToDelete: string | null = null;
+  videoToUpdate: IVideo | null = null;
 
   constructor(
       private channelService: ChannelService,
@@ -23,6 +25,7 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     this.loadChannel();
+    console.log('Première vidéo chargée : ', this.videos[0]);
   }
 
   loadChannel() {
@@ -32,11 +35,19 @@ export class ContentComponent implements OnInit {
       this.channelService.getChannelById(userId).subscribe(response => {
         this.channelData = response;
         this.videos = this.channelData.idVideos;
+
         console.log('Données de la chaîne :', this.channelData);
         console.log('Vidéos récupérées :', this.videos);
+
+        if (this.videos && this.videos.length > 0) {
+          console.log('Première vidéo chargée : ', this.videos[0]);
+        } else {
+          console.log('Aucune vidéo chargée');
+        }
       });
     }
   }
+
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);
@@ -58,7 +69,7 @@ export class ContentComponent implements OnInit {
 
   confirmDelete() {
     if (this.videoToDelete) {
-      const url = `http://35.180.39.107:3000/videos/${this.videoToDelete}`;
+      const url = `${this.environment.apiUrl}/videos/${this.videoToDelete}`;
       this.http.delete(url).subscribe({
         next: (response) => {
           console.log('Vidéo supprimée avec succès', response);
@@ -70,5 +81,37 @@ export class ContentComponent implements OnInit {
         }
       });
     }
+  }
+
+  openUpdateVideo(video: IVideo) {
+    console.log('ID de la vidéo sélectionnée pour mise à jour : ', video._id);
+    this.videoToUpdate = { ...video };
+  }
+
+  updateVideo() {
+    if (this.videoToUpdate && this.videoToUpdate._id) {
+      const url = `${environment.apiUrl}/videos/${this.videoToUpdate._id}`;
+
+      this.http.put(url, this.videoToUpdate).subscribe({
+        next: (response) => {
+          console.log('Réponse de la mise à jour de la vidéo : ', response);
+
+          this.videos = this.videos.map(video =>
+              video._id === this.videoToUpdate?._id ? this.videoToUpdate : video
+          );
+
+          this.videoToUpdate = null;
+        },
+        error: (error) => {
+          console.error('Erreur lors de la mise à jour de la vidéo : ', error);
+        }
+      });
+    } else {
+      console.error('Erreur : ID de la vidéo est undefined lors de la mise à jour');
+    }
+  }
+
+  cancelUpdate() {
+    this.videoToUpdate = null;
   }
 }

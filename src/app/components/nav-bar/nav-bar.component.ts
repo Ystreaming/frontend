@@ -15,7 +15,11 @@ export class NavBarComponent implements OnInit {
   searchTerm: string = '';
   showDropdown = false;
 
-  constructor(private localStorageService: LocalStorageService, private userService: UserService, private router: Router) {}
+  constructor(
+      private localStorageService: LocalStorageService,
+      private userService: UserService,
+      private router: Router
+  ) {}
 
   ngOnInit(): void {
     let userId = this.localStorageService.getUserDetails();

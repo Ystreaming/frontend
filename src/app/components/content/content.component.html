@@ -12,7 +12,7 @@
             </div>
         </a>
         <div>
-            <button class="update">
+            <button class="update" (click)="openUpdateVideo(video)">
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15.0765 8.02667L16.3032 9.25333L4.22317 21.3333H2.9965V20.1067L15.0765 8.02667ZM19.8765 0C19.5432 0 19.1965 0.133333 18.9432 0.386667L16.5032 2.82667L21.5032 7.82667L23.9432 5.38667C24.4632 4.86667 24.4632 4.02667 23.9432 3.50667L20.8232 0.386667C20.5565 0.12 20.2232 0 19.8765 0ZM15.0765 4.25333L0.329834 19V24H5.32983L20.0765 9.25333L15.0765 4.25333Z" fill="#F4EDDE"/>
                 </svg>
@@ -28,6 +28,14 @@
                 <p>Êtes-vous sûr de vouloir supprimer cette vidéo ?</p>
                 <button (click)="confirmDelete()">Oui</button>
                 <button (click)="cancelDelete()">Non</button>
+            </div>
+        </div>
+        <div *ngIf="videoToUpdate" class="overlay">
+            <div class="update-dialog">
+                <input [(ngModel)]="videoToUpdate.title" type="text" placeholder="Titre">
+                <!-- prochain input à ajouter ici -->
+                <button (click)="updateVideo()">Mettre à jour</button>
+                <button (click)="cancelUpdate()">Annuler</button>
             </div>
         </div>
     </div>

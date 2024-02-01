@@ -10,6 +10,7 @@
             <button [ngStyle]="{'color': selectedTab === 'dashboard' ? '#EC567C' : ''}" (click)="selectedTab = 'dashboard'">Tableau de bord</button>
             <button [ngStyle]="{'color': selectedTab === 'content' ? '#EC567C' : ''}" (click)="selectedTab = 'content'">Contenu</button>
             <button [ngStyle]="{'color': selectedTab === 'settings' ? '#EC567C' : ''}" (click)="selectedTab = 'settings'">Paramètres</button>
+            <button [ngStyle]="{'color': selectedTab === 'upload' ? '#EC567C' : ''}" (click)="selectedTab = 'upload'">Poster une vidéo</button>
         </div>
     </article>
 
@@ -17,5 +18,6 @@
         <app-dashboard *ngIf="selectedTab === 'dashboard'"></app-dashboard>
         <app-content *ngIf="selectedTab === 'content'"></app-content>
         <app-settings *ngIf="selectedTab === 'settings'"></app-settings>
+        <app-settings *ngIf="selectedTab === 'upload'"></app-settings>
     </div>
 </section>
