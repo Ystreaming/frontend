@@ -26,7 +26,7 @@ export class ContentComponent implements OnInit {
   }
 
   loadChannel() {
-    const userId = '65afc4c36e416a8be03943ef'; // Exemple d'ID utilisateur
+    const userId = '65afc4c36e416a8be03943ef';
 
     if (userId) {
       this.channelService.getChannelById(userId).subscribe(response => {
