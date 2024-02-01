@@ -1,0 +1,21 @@
+<app-nav-bar></app-nav-bar>
+<section class="container wrapper">
+    <article class="container__panel">
+        <div class="userInfo">
+            <img [src]="user?.profileImage ? (environment.apiUrl + user.profileImage.path) : 'assets/userProfil.png'" alt="image profil" class="imageProfiil">
+            <p>Votre chaîne</p>
+            <p class="profilName">{{ user?.username }}</p>
+        </div>
+        <div class="profile-tabs">
+            <button [ngStyle]="{'color': selectedTab === 'dashboard' ? '#EC567C' : ''}" (click)="selectedTab = 'dashboard'">Tableau de bord</button>
+            <button [ngStyle]="{'color': selectedTab === 'content' ? '#EC567C' : ''}" (click)="selectedTab = 'content'">Contenu</button>
+            <button [ngStyle]="{'color': selectedTab === 'settings' ? '#EC567C' : ''}" (click)="selectedTab = 'settings'">Paramètres</button>
+        </div>
+    </article>
+
+    <div class="profile-content">
+        <app-dashboard *ngIf="selectedTab === 'dashboard'"></app-dashboard>
+        <app-content *ngIf="selectedTab === 'content'"></app-content>
+        <app-settings *ngIf="selectedTab === 'settings'"></app-settings>
+    </div>
+</section>

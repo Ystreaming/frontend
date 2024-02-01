@@ -1,0 +1,69 @@
+.video {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  img {
+    min-width: 350px;
+    min-height: 200px;
+    width: 400px;
+    height: 250px;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+  img :hover {
+    transform: scale(1.1);
+  }
+  .video-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h3 {
+      color: #EC567C;
+      margin: 0;
+    }
+  }
+  button {
+    background: none;
+    border: none;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirmation-dialog {
+  background-color: #F4EDDE;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 90%;
+  p {
+    color: #1E1E1E;
+  }
+}
+
+.confirmation-dialog button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirmation-dialog button:last-child {
+  background-color: #f44336;
+  color: #F4EDDE;
+}

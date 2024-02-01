@@ -24,6 +24,12 @@ import { FollowingPageComponent } from './pages/following-page/following-page.co
 import { MostViewedPageComponent } from './pages/most-viewed-page/most-viewed-page.component';
 import { VideosByCategoryPageComponent } from './pages/videos-by-category-page/videos-by-category-page.component';
 import { SearchComponent } from './pages/search/search.component';
+import { MyprofileComponent } from './pages/myprofile/myprofile.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ContentComponent } from './components/content/content.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { ConfirmDialogComponent } from './components/update-video/confirm-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +50,11 @@ import { SearchComponent } from './pages/search/search.component';
     MostViewedPageComponent,
     VideosByCategoryPageComponent,
     SearchComponent,
+    MyprofileComponent,
+    DashboardComponent,
+    ContentComponent,
+    SettingsComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

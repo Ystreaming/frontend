@@ -1,0 +1,37 @@
+<div *ngIf="videos.length > 0; else noVideos">
+    <h2>Contenu de la chaîne</h2>
+    <div class="video" *ngFor="let video of videos">
+        <a [routerLink]="['/video', video._id]" class="video">
+            <img [src]="environment.apiUrl + video.img.path" alt="Miniature de la vidéo {{video.title}}">
+            <div class="video-info">
+                <h3>{{video.title}}</h3>
+                <p class="video-info_description">{{video.description}}</p>
+                <div>
+                    <p>{{video.view}} views - {{video.like}} likes - {{formatDate(video.createdAt)}}</p>
+                </div>
+            </div>
+        </a>
+        <div>
+            <button class="update">
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.0765 8.02667L16.3032 9.25333L4.22317 21.3333H2.9965V20.1067L15.0765 8.02667ZM19.8765 0C19.5432 0 19.1965 0.133333 18.9432 0.386667L16.5032 2.82667L21.5032 7.82667L23.9432 5.38667C24.4632 4.86667 24.4632 4.02667 23.9432 3.50667L20.8232 0.386667C20.5565 0.12 20.2232 0 19.8765 0ZM15.0765 4.25333L0.329834 19V24H5.32983L20.0765 9.25333L15.0765 4.25333Z" fill="#F4EDDE"/>
+                </svg>
+            </button>
+            <button class="delete" (click)="askDeleteConfirmation(video._id)">
+                <svg width="19" height="24" viewBox="0 0 19 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.9999 8V21.3333H4.33325V8H14.9999ZM12.9999 0H6.33325L4.99992 1.33333H0.333252V4H18.9999V1.33333H14.3333L12.9999 0ZM17.6666 5.33333H1.66659V21.3333C1.66659 22.8 2.86659 24 4.33325 24H14.9999C16.4666 24 17.6666 22.8 17.6666 21.3333V5.33333Z" fill="#EC567C"/>
+                </svg>
+            </button>
+        </div>
+        <div *ngIf="video._id === videoToDelete" class="overlay">
+            <div class="confirmation-dialog">
+                <p>Êtes-vous sûr de vouloir supprimer cette vidéo ?</p>
+                <button (click)="confirmDelete()">Oui</button>
+                <button (click)="cancelDelete()">Non</button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #noVideos>
+    <p>Aucune vidéo trouvée pour cet utilisateur.</p>
+</ng-template>

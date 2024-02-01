@@ -10,6 +10,7 @@ import { FollowingPageComponent } from './pages/following-page/following-page.co
 import { MostViewedPageComponent } from './pages/most-viewed-page/most-viewed-page.component';
 import { VideosByCategoryPageComponent } from './pages/videos-by-category-page/videos-by-category-page.component';
 import { SearchComponent } from './pages/search/search.component';
+import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent }, // Route pour la page d'accueil
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'most-viewed', component: MostViewedPageComponent }, // Route pour la liste des vidéos les plus vues
   { path: 'category/:id', component: VideosByCategoryPageComponent },
   { path: 'search/:searchQuery', component: SearchComponent }, // Route pour la recherche
+  { path: 'profile', component: MyprofileComponent },
 ];
 
 @NgModule({
