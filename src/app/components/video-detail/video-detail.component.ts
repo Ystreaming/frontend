@@ -1,6 +1,8 @@
 import { IComment } from './../../models/comment.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
+import { Subscription, forkJoin } from 'rxjs';
 import { CommentService } from 'src/app/services/comment.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { VideoService } from 'src/app/services/video.service';
@@ -11,36 +13,55 @@ import { environment } from 'src/environments/environment';
   templateUrl: './video-detail.component.html',
   styleUrls: ['./video-detail.component.scss']
 })
-export class VideoDetailComponent implements OnInit {
+export class VideoDetailComponent implements OnInit, OnDestroy {
   videoId: string = "";
   videoData: any;
+  streamData: any;
   commentData: any;
   commentText: string = '';
   subscriberCount: number | undefined;
   environment = environment;
 
+  videoUrl: SafeUrl | null = null;
+  private videoSubscription: Subscription | null = null;
+
   constructor(
     private route: ActivatedRoute, private videoService: VideoService,
     private commentService: CommentService, private localStorageService: LocalStorageService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.videoId = params.get('id')!;
-      this.loadVideo(this.videoId);
-      this.loadComments(this.videoId);
+      this.loadData(this.videoId);
+      this.loadVideoStream(this.videoId);
     });
   }
 
-  loadVideo(videoId: string) {
-    this.videoService.getVideoById(videoId).subscribe(response => {
-      this.videoData = response;
-    });
+  ngOnDestroy(): void {
+    if (this.videoSubscription) {
+      this.videoSubscription.unsubscribe();
+    }
+    if (this.videoUrl) {
+      URL.revokeObjectURL(this.videoUrl as string);
+    }
   }
 
-  loadComments(videoId: string) {
-    this.videoService.getCommentsByVideoId(videoId).subscribe(response => {
-      this.commentData = response;
+  loadData(videoId: string) {
+    forkJoin({
+      videoData: this.videoService.getVideoById(videoId),
+      commentData: this.videoService.getCommentsByVideoId(videoId),
+    }).subscribe(({ videoData, commentData }) => {
+      this.videoData = videoData;
+      this.commentData = commentData;
+    })
+  }
+
+  loadVideoStream(videoId: string) {
+    this.videoSubscription = this.videoService.getStreamVideo(videoId).subscribe(blob => {
+      const unsafeUrl = URL.createObjectURL(blob);
+      this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(unsafeUrl);
     });
   }
 

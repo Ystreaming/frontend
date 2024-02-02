@@ -1,6 +1,9 @@
 <section class="wrapper">
     <div *ngIf="videoData" class="video-block">
-        <img [src]="environment.apiUrl + videoData.img.path" alt="Miniature" class="video-block__image">
+        <img *ngIf="!videoUrl" [src]="environment.apiUrl + videoData.img.path" alt="Miniature" class="video-block__image">
+        <video *ngIf="videoUrl" [src]="videoUrl" controls class="video-block__image">
+            Your browser does not support HTML5 video.
+        </video>
         <h2 class="video-block__title">{{ videoData.title }}</h2>
         <div class="streamer-block">
             <div class="streamer-block__info">
