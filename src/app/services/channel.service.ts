@@ -25,7 +25,7 @@ export class ChannelService {
     return this.http.get<IChannel>(`${this.apiUrl}/${id}`);
   }
 
-  updateChannelById(id: number, channelData: IChannel): Observable<IChannel> {
+  updateChannelById(id: string, channelData: IChannel): Observable<IChannel> {
     return this.http.put<IChannel>(`${this.apiUrl}/${id}`, channelData);
   }
 
