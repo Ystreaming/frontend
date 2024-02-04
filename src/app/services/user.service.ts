@@ -42,4 +42,9 @@ export class UserService {
     return this.http.get<any>(`${this.apiUrl}/username/${username}`);
   }
 
+  createSub(idChannel: string): Observable<any> {
+    let userId = this.localStorageService.getUserDetails();
+    return this.http.patch(`${this.apiUrl}/sub/${userId}`, { subId: idChannel });
+  }
+
 }

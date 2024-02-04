@@ -1,18 +1,7 @@
+import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-interface Video {
-  id: number;
-  miniatureVideo: string;
-  imageProfilDescription: string;
-  videoName: string;
-  streamerName: string;
-  category: string;
-  description: string;
-  views: number;
-  uploadDate: string;
-  comments: Comment[];
-}
+import { VideoService } from 'src/app/services/video.service';
 
 @Component({
   selector: 'app-recommended-video',
@@ -21,21 +10,18 @@ interface Video {
 })
 export class RecommendedVideoComponent implements OnInit {
   videos: any = [];
+  environment = environment;
 
-  constructor(private http: HttpClient) {}
+  constructor(private videoService: VideoService) {}
 
   ngOnInit() {
     this.loadVideos();
   }
 
   loadVideos(): void {
-    this.http.get<Video[]>('/assets/video.json').subscribe(
-        data => {
-          this.videos = data;
-        },
-        error => {
-          console.error('Erreur lors du chargement des vidéos', error);
-        }
-    );
+    this.videoService.getRecommendation(6).subscribe(response => {
+      this.videos = response;
+      console.log(response);
+    });
   }
 }

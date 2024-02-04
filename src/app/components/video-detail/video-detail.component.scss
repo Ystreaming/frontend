@@ -55,8 +55,15 @@
     padding: 16px 32px;
     color: white;
     border: none;
+    cursor: pointer;
   }
-  // Autres styles pour .streamer-block
+  
+  &__following-text {
+    border-radius: 8px;
+    background-color: #F4EDDE;
+    padding: 16px 32px;
+    color: #1E1E1E;
+  }
 }
 
 .description-block {

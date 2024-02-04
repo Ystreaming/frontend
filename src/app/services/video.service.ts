@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -26,7 +26,7 @@ export class VideoService {
     return this.http.post<IVideo>(this.apiUrl, videoData);
   }
 
-  getVideoById(id: string): Observable<IVideo> {
+  getVideoById(id: string): Observable<any> {
     return this.http.get<IVideo>(`${this.apiUrl}/${id}`);
   }
 
@@ -40,5 +40,50 @@ export class VideoService {
 
   getCommentsByVideoId(id: string): Observable<IComment[]> {
     return this.http.get<IComment[]>(`${this.apiUrl}/comments/${id}`);
+  }
+
+  getRecommendation(limit?: number): Observable<any> {
+    let params = "";
+    if (limit !== undefined) {
+        params += `?limit=${limit}`;
+    }
+    return this.http.get<any>(`${this.apiUrl}/recommendation${params}`);
+  }
+
+  getMostViewed(limit?: number): Observable<any> {
+    let params = "";
+    if (limit !== undefined) {
+        params += `?limit=${limit}`;
+    }
+    return this.http.get<any>(`${this.apiUrl}/mostviewed${params}`);
+  }
+
+  getVideosByCategory(id: string, limit: number): Observable<any> {
+    let params = "";
+    if (limit !== undefined) {
+        params += `?limit=${limit}`;
+    }
+    return this.http.get<any>(`${this.apiUrl}/category/${id}${params}`);
+  }
+
+  getVideosByName(name: string | null, limit: number): Observable<any> {
+    let params = "";
+    if (limit !== undefined) {
+        params += `?limit=${limit}`;
+    }
+    return this.http.get<any>(`${this.apiUrl}/search/${name}${params}`);
+  }
+
+  getStreamVideo(id: string): Observable<Blob> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'video/mp4',
+      'Accept': 'video/*'
+    });
+
+    return this.http.get(`${this.apiUrl}/stream/${id}`, {
+      headers: headers,
+      responseType: 'blob',
+      observe: 'body',
+    });
   }
 }
