@@ -2,7 +2,7 @@ import { IComment } from './../../models/comment.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
-import { Subscription, forkJoin } from 'rxjs';
+import { Subscription, forkJoin, of } from 'rxjs';
 import { CommentService } from 'src/app/services/comment.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
@@ -37,7 +37,6 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe(params => {
       this.videoId = params.get('id')!;
       this.loadData(this.videoId);
-      this.loadSubs();
       this.loadVideoStream(this.videoId);
     });
   }
@@ -52,35 +51,27 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
   }
 
   loadData(videoId: string) {
+    let userId = this.localStorageService.getUserDetails();
+  
     forkJoin({
       videoData: this.videoService.getVideoById(videoId),
       commentData: this.videoService.getCommentsByVideoId(videoId),
-    }).subscribe(({ videoData, commentData }) => {
+      subData: userId ? this.userService.getSubByUser(userId) : of(null),
+    }).subscribe(({ videoData, commentData, subData }) => {
       this.videoData = videoData;
       this.commentData = commentData;
-    })
+      
+      if (subData) {
+        this.isSub = subData.subItems.some((sub: any) => sub._id === videoData.idChannel._id);
+      }
+    });
   }
+  
 
   loadVideoStream(videoId: string) {
     this.videoSubscription = this.videoService.getStreamVideo(videoId).subscribe(blob => {
       const unsafeUrl = URL.createObjectURL(blob);
       this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(unsafeUrl);
-    });
-  }
-
-  loadSubs() {
-    let userId = this.localStorageService.getUserDetails();
-
-    if (userId === null) {
-      return;
-    }
-
-    this.userService.getSubByUser(userId).subscribe(response => {
-      response.subItems.forEach((sub: any) => {
-        if (sub._id === this.videoData.idChannel._id) {
-          this.isSub = true;
-        }
-      });
     });
   }
 
