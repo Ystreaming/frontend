@@ -96,6 +96,12 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
   }
 
   subscribe() {
+    let userId = this.localStorageService.getUserDetails();
+
+    if (userId === null) {
+      return;
+    }
+    
     let idChannel = this.videoData.idChannel._id;
     this.userService.createSub(idChannel).subscribe(() => {
       this.ngOnInit();
