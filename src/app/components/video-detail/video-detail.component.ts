@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { Subscription, forkJoin } from 'rxjs';
 import { CommentService } from 'src/app/services/comment.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { UserService } from 'src/app/services/user.service';
 import { VideoService } from 'src/app/services/video.service';
 import { environment } from 'src/environments/environment';
 
@@ -21,6 +22,7 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
   commentText: string = '';
   subscriberCount: number | undefined;
   environment = environment;
+  isSub: boolean = false;
 
   videoUrl: SafeUrl | null = null;
   private videoSubscription: Subscription | null = null;
@@ -28,13 +30,14 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute, private videoService: VideoService,
     private commentService: CommentService, private localStorageService: LocalStorageService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer, private userService: UserService
   ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.videoId = params.get('id')!;
       this.loadData(this.videoId);
+      this.loadSubs();
       this.loadVideoStream(this.videoId);
     });
   }
@@ -65,6 +68,22 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
     });
   }
 
+  loadSubs() {
+    let userId = this.localStorageService.getUserDetails();
+
+    if (userId === null) {
+      return;
+    }
+
+    this.userService.getSubByUser(userId).subscribe(response => {
+      response.subItems.forEach((sub: any) => {
+        if (sub._id === this.videoData.idChannel._id) {
+          this.isSub = true;
+        }
+      });
+    });
+  }
+
   addComment() {
     let data = {
       texte: this.commentText,
@@ -72,7 +91,14 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
       idVideo: this.videoId
     };
     this.commentService.createComment(data).subscribe(response => {
-      window.location.reload();
+      this.ngOnInit();
+    })
+  }
+
+  subscribe() {
+    let idChannel = this.videoData.idChannel._id;
+    this.userService.createSub(idChannel).subscribe(() => {
+      this.ngOnInit();
     })
   }
 
