@@ -76,6 +76,26 @@
   }
 }
 
+.nav-bar__profile-image-img {
+  width: 48px;
+  height: 48px;
+}
+
+.nav-bar__profile-container {
+  position: relative;
+  .nav-bar__dropdown {
+    width: 130px;
+    position: absolute;
+    gap: 20px;
+    right: 0;
+    background-color: #EC567C;
+    border-radius: 4px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .logo {
     display: none;
