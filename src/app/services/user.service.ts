@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -42,4 +44,10 @@ export class UserService {
     return this.http.get<any>(`${this.apiUrl}/username/${username}`);
   }
 
+  getUserChannel(userId: string): Observable<string | null> {
+    return this.http.get<{id: string} | null>(`${environment.apiUrl}/channels/user/${userId}`).pipe(
+        map(response => response ? response.id : null),
+        catchError(() => of(null))
+    );
+  }
 }

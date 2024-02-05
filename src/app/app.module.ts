@@ -29,6 +29,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ContentComponent } from './components/content/content.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ConfirmDialogComponent } from './components/update-video/confirm-dialog.component';
+import { CreateChannelComponent } from './components/create-channel/create-channel.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { ConfirmDialogComponent } from './components/update-video/confirm-dialog
     ContentComponent,
     SettingsComponent,
     ConfirmDialogComponent,
+    CreateChannelComponent,
   ],
   imports: [
     BrowserModule,

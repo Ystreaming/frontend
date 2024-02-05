@@ -13,6 +13,7 @@ export class MyprofileComponent implements OnInit {
   environment = environment;
   user: any;
   selectedTab: string = 'dashboard';
+  channelId: string | null = null;
 
   constructor(
       private userService: UserService,
@@ -26,6 +27,9 @@ export class MyprofileComponent implements OnInit {
     if (userId) {
       this.userService.getUserById(userId).subscribe(user => {
         this.user = user;
+      });
+      this.userService.getUserChannel(userId).subscribe(channelId => {
+        this.channelId = channelId;
       });
     }
     this.route.queryParams.subscribe(params => {
