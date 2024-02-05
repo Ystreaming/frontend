@@ -32,8 +32,8 @@
         <div *ngIf="user" class="nav-bar__profile-container">
             <img [src]="user.profileImage ? (environment.apiUrl + user.profileImage.path) : 'assets/userProfil.png'" alt="User Profile Image" class="nav-bar__profile-image-img" (click)="toggleDropdown()">
             <div class="nav-bar__dropdown" *ngIf="showDropdown">
-                <a href="#">Profil</a>
-                <a href="#">Paramètres</a>
+                <a href="/profile">Profil</a>
+                <a [routerLink]="['/profile']" [queryParams]="{ tab: 'settings' }">Paramètres</a>
                 <a href="#" (click)="logout()">Se déconnecter</a>
             </div>
         </div>

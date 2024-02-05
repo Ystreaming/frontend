@@ -1,0 +1,18 @@
+<div class="settings-container" *ngIf="channel">
+    <h2>Paramètres de la chaîne</h2>
+    <form (ngSubmit)="updateChannel()">
+        <div class="input-group">
+            <label for="channelName">Nom de la chaîne</label>
+            <input id="channelName" type="text" [(ngModel)]="channel.name" name="name" required>
+        </div>
+        <div class="input-group">
+            <label for="channelDescription">Description</label>
+            <textarea id="channelDescription" [(ngModel)]="channel.description" name="description" required></textarea>
+        </div>
+        <div class="profile-image" *ngIf="channel && channel.image">
+            <img *ngIf="imageUrl" [src]="imageUrl" alt="Photo de profil de la chaîne">
+            <div class="image-description">Photo de profil</div>
+        </div>
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+</div>

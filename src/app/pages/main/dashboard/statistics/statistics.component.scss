@@ -1,0 +1,24 @@
+.stats{
+    display: flex;
+    gap: 5%;
+    .statCard {
+      border-radius: 8px;
+      background: #F4EDDE;
+      width: 293px;
+      height: 149px;
+      color: #212121;
+      font-family: Montserrat, sans-serif;
+      font-size: 25px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      .statElement {
+        margin: 0;
+      }
+    }
+  }

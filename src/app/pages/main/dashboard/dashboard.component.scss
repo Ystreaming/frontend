@@ -1,0 +1,59 @@
+.active-tab {
+    color: #EC567C;
+    fill: #EC567C;
+  }
+  
+  .container {
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    .container__panel {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      .profile-tabs {
+        margin-top: 48px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        button {
+          background: none;
+          border: none;
+          font-family: Montserrat, sans-serif;
+          font-size: 20px;
+          font-style: normal;
+          color: #F4EDDE;
+          font-weight: 600;
+          line-height: normal;
+          text-align: left;
+          padding: 0;
+        }
+      }
+    }
+  }
+  
+  .imageProfiil {
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+    object-fit: cover;
+  }
+  
+  .userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .profilName {
+    color: #EC567C;
+  }
+  
+  .profile-content {
+    grid-column-start: 3;
+    grid-column-end: 13;
+  }
