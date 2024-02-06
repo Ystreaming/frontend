@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChannelService } from 'src/app/services/channel.service';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { IVideo } from 'src/app/models/video.model';
@@ -16,10 +15,10 @@ export class ContentComponent implements OnInit {
   environment = environment;
   videoToDelete: string | null = null;
   videoToUpdate: IVideo | null = null;
+  @Input() channelIdFromParent: string = '';
 
   constructor(
       private channelService: ChannelService,
-      private localStorageService: LocalStorageService,
       private http: HttpClient
   ) {}
 
@@ -28,10 +27,8 @@ export class ContentComponent implements OnInit {
   }
 
   loadChannel() {
-    const userId = '65afc4c36e416a8be03943ef'; // Exemple d'ID utilisateur
-
-    if (userId) {
-      this.channelService.getChannelById(userId).subscribe(response => {
+    if (this.channelIdFromParent) {
+      this.channelService.getChannelById(this.channelIdFromParent).subscribe(response => {
         this.channelData = response;
         this.videos = this.channelData.idVideos;
         console.log('Données de la chaîne :', this.channelData);

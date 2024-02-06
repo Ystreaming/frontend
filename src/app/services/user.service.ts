@@ -1,4 +1,5 @@
 import { IUser } from './../models/user.model';
+import { IChannel } from 'src/app/models/channel.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -46,12 +47,4 @@ export class UserService {
     let userId = this.localStorageService.getUserDetails();
     return this.http.patch(`${this.apiUrl}/sub/${userId}`, { subId: idChannel });
   }
-
-  getUserChannel(userId: string): Observable<string | null> {
-    return this.http.get<{id: string} | null>(`${environment.apiUrl}/channels/user/${userId}`).pipe(
-        map(response => response ? response.id : null),
-        catchError(() => of(null))
-    );
-  }
-
 }

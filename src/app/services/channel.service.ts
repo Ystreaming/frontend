@@ -36,4 +36,8 @@ export class ChannelService {
   searchChannelByUsername(username: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/search/${username}`);
   }
+
+  getChannelByUserId(userId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user/${userId}`);
+  }
 }

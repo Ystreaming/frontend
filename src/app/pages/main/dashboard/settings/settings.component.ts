@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import { ChannelService } from 'src/app/services/channel.service';
 import { environment } from 'src/environments/environment';
@@ -9,9 +9,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-
   channel: any = null;
   environment = environment;
+  @Input() channelIdFromParent: string = '';
 
   constructor(private channelService: ChannelService, private notifierService: NotifierService) {}
 
@@ -20,14 +20,15 @@ export class SettingsComponent implements OnInit {
   }
 
   loadChannel(): void {
-    const channelId = '65afc4c36e416a8be03943ef';
-    this.channelService.getChannelById(channelId).subscribe({
-      next: (data) => {
-        this.channel = data;
-        console.log('Réponse du chargement du canal:', data);
-      },
-      error: (err) => console.error(err)
-    });
+    if (this.channelIdFromParent) {
+      this.channelService.getChannelById(this.channelIdFromParent).subscribe({
+        next: (data) => {
+          this.channel = data;
+          console.log('Réponse du chargement du canal:', data);
+        },
+        error: (err) => console.error(err)
+      });
+    }
   }
 
   get imageUrl() {
@@ -52,5 +53,4 @@ export class SettingsComponent implements OnInit {
       this.notifierService.notify('error', 'ID de la chaîne manquant ou chaîne non défini');
     }
   }
-
 }
