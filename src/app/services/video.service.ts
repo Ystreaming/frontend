@@ -98,3 +98,6 @@ export class VideoService {
     });
   }
 }
+
+export class Video {
+}
