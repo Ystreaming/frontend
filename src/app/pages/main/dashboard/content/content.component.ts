@@ -3,6 +3,7 @@ import { ChannelService } from 'src/app/services/channel.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { IVideo } from 'src/app/models/video.model';
+import {VideoService} from "../../../../services/video.service";
 
 @Component({
   selector: 'app-content',
@@ -19,6 +20,7 @@ export class ContentComponent implements OnInit {
 
   constructor(
       private channelService: ChannelService,
+      private videoService: VideoService,
       private http: HttpClient
   ) {}
 

@@ -33,7 +33,7 @@
         <div *ngIf="videoToUpdate" class="overlay">
             <div class="update-dialog">
                 <input [(ngModel)]="videoToUpdate.title" type="text" placeholder="Titre">
-                <!-- prochain input à ajouter ici -->
+                <input [(ngModel)]="videoToUpdate.description" type="text" placeholder="Description">
                 <button (click)="updateVideo()">Mettre à jour</button>
                 <button (click)="cancelUpdate()">Annuler</button>
             </div>

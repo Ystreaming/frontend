@@ -42,7 +42,7 @@ export class UploadVideoComponent {
     formData.append('thumbnail', this.videoData.thumbnail);
     formData.append('video', this.videoData.video);
 
-    formData.append('idCategory', this.videoData.idCategory.toString());
+    formData.append('idCategory', this.videoData.idCategory);
 
     this.videoService.createVideo(formData).subscribe((event: any) => {
       if (event.type === HttpEventType.Sent) {
