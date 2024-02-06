@@ -10,12 +10,14 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { LocalStorageService } from './services/local-storage.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { NotifierModule } from 'angular-notifier';
+import { UploadVideoComponent } from './pages/main/dashboard/upload-video/upload-video.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     RegisterPageComponent,
+    UploadVideoComponent,
   ],
   imports: [
     BrowserModule,
