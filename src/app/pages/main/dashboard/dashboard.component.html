@@ -17,5 +17,6 @@
         <app-statistics [channelIdFromParent]="channel[0]._id" *ngIf="selectedTab === 'dashboard'"></app-statistics>
         <app-content [channelIdFromParent]="channel[0]._id" *ngIf="selectedTab === 'content'"></app-content>
         <app-settings [channelIdFromParent]="channel[0]._id" *ngIf="selectedTab === 'settings'"></app-settings>
+        <app-upload-video [channelIdFromParent]="channel[0]._id" *ngIf="selectedTab === 'upload'"></app-upload-video>
     </div>
 </section>

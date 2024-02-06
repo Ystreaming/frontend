@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {catchError, Observable, throwError} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IVideo } from '../models/video.model';
 import { IComment } from '../models/comment.model';
@@ -22,8 +22,19 @@ export class VideoService {
     return this.http.get<any>(url);
   }
 
-  createVideo(videoData: IVideo): Observable<IVideo> {
-    return this.http.post<IVideo>(this.apiUrl, videoData);
+  createVideo(videoData: FormData): Observable<HttpEvent<IVideo>> {
+    return this.http.post<IVideo>(this.apiUrl, videoData, {
+      reportProgress: true,
+      observe: 'events',
+      responseType: 'json'
+    }).pipe(
+        catchError((error: any) => {
+          console.error('Erreur du serveur :', error);
+          return new Observable<HttpEvent<IVideo>>(observer => {
+            observer.error('Erreur du serveur. Veuillez réessayer.');
+          });
+        })
+    );
   }
 
   getVideoById(id: string): Observable<any> {

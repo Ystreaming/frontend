@@ -10,6 +10,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CreateChannelComponent } from './create-channel/create-channel.component';
+import { UploadVideoComponent } from './upload-video/upload-video.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CreateChannelComponent } from './create-channel/create-channel.componen
     SettingsComponent,
     ConfirmDialogComponent,
     CreateChannelComponent,
+    UploadVideoComponent
   ],
   imports: [
     CommonModule,
