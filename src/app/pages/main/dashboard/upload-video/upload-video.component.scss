@@ -1,17 +1,17 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Espacement entre les champs */
-  max-width: 500px; /* Largeur maximale du formulaire */
-  margin: auto; /* Centrer le formulaire sur la page */
+  gap: 10px;
+  max-width: 500px;
+  margin: auto;
 }
 
 input[type="text"],
 textarea {
   padding: 8px;
-  border: 1px solid #ccc; /* Bordure légère */
-  border-radius: 4px; /* Bords arrondis */
-  font-size: 16px; /* Taille de police confortable */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 input[type="file"] {
@@ -21,12 +21,12 @@ input[type="file"] {
   padding: 6px 12px;
   cursor: pointer;
   border-radius: 4px;
-  background-color: #f8f8f8; /* Couleur de fond légère pour le champ de fichier */
+  background-color: #f8f8f8;
   margin-top: 5px;
 }
 
 button {
-  background-color: #4CAF50; /* Couleur de fond verte */
+  background-color: #EC567C;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -36,10 +36,10 @@ button {
 }
 
 button:hover {
-  background-color: #45a049; /* Assombrir le bouton légèrement au survol */
+  background-color: #F77A94;
 }
 
 form > * {
-  margin-top: 10px; /* Espacement vertical pour tous les enfants du formulaire */
+  margin-top: 10px;
 }
 
