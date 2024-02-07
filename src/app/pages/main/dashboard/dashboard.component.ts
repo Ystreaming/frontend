@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
         this.user = user;
         this.channelService.getChannelByUserId(userId).subscribe(channel => {
           this.channel = channel;
-          console.log("Channel ID:", this.channel[0]._id);
         });
       });
     }

@@ -4,5 +4,6 @@ export interface IChannel {
     image: string,
     description: string,
     idCategory: [number],
-    idVideos: [number]
+    idVideos: [number],
+    subNumber: number,
 }

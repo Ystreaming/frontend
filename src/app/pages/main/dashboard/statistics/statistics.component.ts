@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChannelService } from 'src/app/services/channel.service';
-import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -19,7 +18,6 @@ export class StatisticsComponent implements OnInit {
 
     constructor(
         private channelService: ChannelService,
-        private userService: UserService
     ) {}
 
     ngOnInit() {
@@ -27,12 +25,9 @@ export class StatisticsComponent implements OnInit {
             this.channelService.getChannelById(this.channelIdFromParent).subscribe(channelData => {
                 if (channelData) {
                     this.userStats.numberOfVideos = channelData.idVideos.length;
+                    this.userStats.totalSub = channelData.subNumber;
                 }
             });
         }
-
-      this.userService.getSubByUser(this.channelIdFromParent).subscribe(subCount => {
-        this.userStats.totalSub = subCount;
-      });
     }
 }
