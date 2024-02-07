@@ -21,6 +21,7 @@ export class ChannelService {
     const formData: FormData = new FormData();
     formData.append('image', imageFile);
     formData.append('idUser', channelData.idUser);
+    formData.append('idVideo', channelData.idVideo);
     formData.append('name', channelData.name);
     formData.append('description', channelData.description);
 

@@ -19,7 +19,6 @@ export class CreateChannelComponent {
   }
 
   createChannel(): void {
-    console.log(this.idUser)
     if (!this.name || !this.description || !this.image) {
       alert('Le nom, la description et l\'image sont requis.');
       return;
@@ -27,14 +26,19 @@ export class CreateChannelComponent {
 
     const channelData = {
       idUser: this.idUser,
-      //idVideos: "65b7a4f15a039c8d19e6d868",
+      idVideo: "65b7a4f15a039c8d19e6d868",
       name: this.name,
       description: this.description,
     };
 
     this.channelService.createChannel(channelData, this.image).subscribe({
-      next: (response) => console.log(response),
-      error: (error) => console.error(error)
+      next: (response) => {
+        console.log(response);
+        window.location.reload();
+      },
+      error: (error) => {
+        console.error(error);
+      }
     });
   }
 }

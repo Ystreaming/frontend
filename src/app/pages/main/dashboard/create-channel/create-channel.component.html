@@ -1,9 +1,18 @@
-<section>
-    <h1>Créez votre chaîne !</h1>
+<div class="create-channel-form">
+    <h1>Créez votre chaîne</h1>
     <form (submit)="createChannel()">
-        <input type="text" [(ngModel)]="name" name="name" placeholder="Nom de la chaîne" required>
-        <textarea [(ngModel)]="description" name="description" placeholder="Description" required></textarea>
-        <input type="file" (change)="onFileSelected($event)" required>
-        <button type="submit">Créer la chaîne</button>
+        <div class="form-field">
+            <label for="name">Nom de la chaîne</label>
+            <input type="text" id="name" [(ngModel)]="name" name="name" placeholder="Nom de la chaîne" required>
+        </div>
+        <div class="form-field">
+            <label for="description">Description</label>
+            <textarea id="description" [(ngModel)]="description" name="description" placeholder="Description" required></textarea>
+        </div>
+        <div class="form-field">
+            <label for="image">Image de la chaîne</label>
+            <input type="file" id="image" (change)="onFileSelected($event)" required>
+        </div>
+        <button type="submit" class="submit-button">Créer la chaîne</button>
     </form>
-</section>
+</div>
