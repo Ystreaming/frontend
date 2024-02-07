@@ -85,17 +85,8 @@ export class VideoService {
     return this.http.get<any>(`${this.apiUrl}/search/${name}${params}`);
   }
 
-  getStreamVideo(id: string): Observable<Blob> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'video/mp4',
-      'Accept': 'video/*'
-    });
-
-    return this.http.get(`${this.apiUrl}/stream/${id}`, {
-      headers: headers,
-      responseType: 'blob',
-      observe: 'body',
-    });
+  getStreamVideo(id: string): string {
+    return `${this.apiUrl}/stream/${id}`;
   }
 }
 

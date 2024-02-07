@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './video-detail.component.html',
   styleUrls: ['./video-detail.component.scss']
 })
-export class VideoDetailComponent implements OnInit, OnDestroy {
+export class VideoDetailComponent implements OnInit {
   videoId: string = "";
   videoData: any;
   streamData: any;
@@ -25,7 +25,6 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
   isSub: boolean = false;
 
   videoUrl: SafeUrl | null = null;
-  private videoSubscription: Subscription | null = null;
 
   constructor(
     private route: ActivatedRoute, private videoService: VideoService,
@@ -39,15 +38,6 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
       this.loadData(this.videoId);
       this.loadVideoStream(this.videoId);
     });
-  }
-
-  ngOnDestroy(): void {
-    if (this.videoSubscription) {
-      this.videoSubscription.unsubscribe();
-    }
-    if (this.videoUrl) {
-      URL.revokeObjectURL(this.videoUrl as string);
-    }
   }
 
   loadData(videoId: string) {
@@ -69,10 +59,7 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
   
 
   loadVideoStream(videoId: string) {
-    this.videoSubscription = this.videoService.getStreamVideo(videoId).subscribe(blob => {
-      const unsafeUrl = URL.createObjectURL(blob);
-      this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(unsafeUrl);
-    });
+    this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(this.videoService.getStreamVideo(videoId));
   }
 
   addComment() {
