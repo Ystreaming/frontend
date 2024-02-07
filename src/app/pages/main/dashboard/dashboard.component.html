@@ -22,6 +22,6 @@
         </div>
     </ng-container>
     <ng-template #createChannel>
-        <app-create-channel></app-create-channel>
+        <app-create-channel [idUser]="user?._id"></app-create-channel>
     </ng-template>
 </section>

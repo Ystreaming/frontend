@@ -1,1 +1,9 @@
-<p>create-channel works!</p>
+<section>
+    <h1>Créez votre chaîne !</h1>
+    <form (submit)="createChannel()">
+        <input type="text" [(ngModel)]="name" name="name" placeholder="Nom de la chaîne" required>
+        <textarea [(ngModel)]="description" name="description" placeholder="Description" required></textarea>
+        <input type="file" (change)="onFileSelected($event)" required>
+        <button type="submit">Créer la chaîne</button>
+    </form>
+</section>

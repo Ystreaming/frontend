@@ -17,8 +17,14 @@ export class ChannelService {
     return this.http.get<IChannel[]>(this.apiUrl);
   }
 
-  createChannel(channelData: IChannel): Observable<IChannel> {
-    return this.http.post<IChannel>(this.apiUrl, channelData);
+  createChannel(channelData: any, imageFile: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('image', imageFile);
+    formData.append('idUser', channelData.idUser);
+    formData.append('name', channelData.name);
+    formData.append('description', channelData.description);
+
+    return this.http.post(`${this.apiUrl}`, formData);
   }
 
   getChannelById(id: string): Observable<IChannel> {
