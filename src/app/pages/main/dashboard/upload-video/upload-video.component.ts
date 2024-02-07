@@ -13,9 +13,11 @@ export class UploadVideoComponent implements OnInit {
   videoData: any = {
     title: '',
     description: '',
-    thumbnail: null,
-    video: null,
-    idCategory: 0
+    img: null,
+    url: null,
+    idCategory: 0,
+    language: 'fr',
+    time: 123
   };
 
   uploadProgress: number = 0;
@@ -39,7 +41,7 @@ export class UploadVideoComponent implements OnInit {
 
   handleThumbnailInput(event: any): void {
     const file = event.target.files[0];
-    this.videoData.thumbnail = file;
+    this.videoData.img = file;
     const reader = new FileReader();
 
     reader.onload = (e: any) => {
@@ -53,7 +55,7 @@ export class UploadVideoComponent implements OnInit {
 
   handleVideoInput(event: any): void {
     const file = event.target.files[0];
-    this.videoData.video = file;
+    this.videoData.url = file;
     const reader = new FileReader();
 
     reader.onload = (e: any) => {
@@ -69,9 +71,12 @@ export class UploadVideoComponent implements OnInit {
     const formData = new FormData();
     formData.append('title', this.videoData.title);
     formData.append('description', this.videoData.description);
-    formData.append('thumbnail', this.videoData.thumbnail);
-    formData.append('video', this.videoData.video);
+    formData.append('img', this.videoData.img);
+    formData.append('url', this.videoData.url);
     formData.append('idCategory', this.videoData.idCategory.toString());
+    formData.append('language', 'fr');
+    formData.append('time', '123');
+    formData.append('idChannel', this.channelIdFromParent);
 
     this.videoService.createVideo(formData).subscribe((event: any) => {
       if (event.type === HttpEventType.Sent) {
