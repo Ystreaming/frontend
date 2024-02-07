@@ -17,7 +17,7 @@
 
     <label for="category">Catégorie :</label>
     <select id="category" name="category" [(ngModel)]="videoData.idCategory" required>
-        <option *ngFor="let category of categoryOptions" [value]="category.value">{{ category.name }}</option>
+        <option *ngFor="let category of categoryOptions" [value]="category._id">{{ category.name }}</option>
     </select>
 
     <button type="submit">Uploader la vidéo</button>

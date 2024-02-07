@@ -1,13 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { VideoService } from 'src/app/services/video.service';
 import { HttpEventType } from '@angular/common/http';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-upload-video',
   templateUrl: './upload-video.component.html',
   styleUrls: ['./upload-video.component.scss']
 })
-export class UploadVideoComponent {
+export class UploadVideoComponent implements OnInit {
   @Input() channelIdFromParent: string = '';
   videoData: any = {
     title: '',
@@ -22,13 +23,19 @@ export class UploadVideoComponent {
   thumbnailPreview: string | ArrayBuffer | null = null;
   videoPreview: string | ArrayBuffer | null = null;
 
-  categoryOptions: { name: string, value: number }[] = [
-    { name: 'Catégorie 1', value: 1 },
-    { name: 'Catégorie 2', value: 2 },
-    { name: 'Catégorie 3', value: 3 },
-  ];
+  categoryOptions: any = [];
 
-  constructor(private videoService: VideoService) {}
+  constructor(private videoService: VideoService, private categorieService: CategoryService) {}
+
+  ngOnInit(): void {
+    this.loadCategories();
+  }
+
+  loadCategories() {
+    this.categorieService.getAllCategories().subscribe((response) => {
+      this.categoryOptions = response.categories;
+    })
+  }
 
   handleThumbnailInput(event: any): void {
     const file = event.target.files[0];
