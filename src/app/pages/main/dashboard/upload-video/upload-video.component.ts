@@ -19,6 +19,9 @@ export class UploadVideoComponent {
 
   uploadProgress: number = 0;
 
+  thumbnailPreview: string | ArrayBuffer | null = null;
+  videoPreview: string | ArrayBuffer | null = null;
+
   categoryOptions: { name: string, value: number }[] = [
     { name: 'Catégorie 1', value: 1 },
     { name: 'Catégorie 2', value: 2 },
@@ -27,12 +30,32 @@ export class UploadVideoComponent {
 
   constructor(private videoService: VideoService) {}
 
-  handleThumbnailInput(event: any) {
-    this.videoData.thumbnail = event.target.files[0];
+  handleThumbnailInput(event: any): void {
+    const file = event.target.files[0];
+    this.videoData.thumbnail = file;
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      this.thumbnailPreview = e.target.result;
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 
-  handleVideoInput(event: any) {
-    this.videoData.video = event.target.files[0];
+  handleVideoInput(event: any): void {
+    const file = event.target.files[0];
+    this.videoData.video = file;
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      this.videoPreview = e.target.result;
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 
   onSubmit() {
@@ -41,8 +64,7 @@ export class UploadVideoComponent {
     formData.append('description', this.videoData.description);
     formData.append('thumbnail', this.videoData.thumbnail);
     formData.append('video', this.videoData.video);
-
-    formData.append('idCategory', this.videoData.idCategory);
+    formData.append('idCategory', this.videoData.idCategory.toString());
 
     this.videoService.createVideo(formData).subscribe((event: any) => {
       if (event.type === HttpEventType.Sent) {

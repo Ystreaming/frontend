@@ -6,16 +6,18 @@
     <textarea id="description" name="description" [(ngModel)]="videoData.description" required></textarea>
 
     <label for="thumbnail">Miniature de la vidéo :</label>
+    <img *ngIf="thumbnailPreview" [src]="thumbnailPreview" alt="Aperçu de la miniature" style="display:block; max-width: 200px; max-height: 200px;" />
     <input type="file" id="thumbnail" name="thumbnail" (change)="handleThumbnailInput($event)" accept="image/*" required>
 
     <label for="video">Fichier vidéo :</label>
+    <video *ngIf="videoPreview" [src]="videoPreview" controls style="display:block; max-width: 400px; max-height: 225px;">
+        Votre navigateur ne supporte pas l'élément <code>video</code>.
+    </video>
     <input type="file" id="video" name="video" (change)="handleVideoInput($event)" accept="video/*" required>
 
     <label for="category">Catégorie :</label>
-    <select id="category" name="category" [(ngModel)]="videoData.category" required>
-        <option value="categorie1">Catégorie 1</option>
-        <option value="categorie2">Catégorie 2</option>
-        <option value="categorie3">Catégorie 3</option>
+    <select id="category" name="category" [(ngModel)]="videoData.idCategory" required>
+        <option *ngFor="let category of categoryOptions" [value]="category.value">{{ category.name }}</option>
     </select>
 
     <button type="submit">Uploader la vidéo</button>
