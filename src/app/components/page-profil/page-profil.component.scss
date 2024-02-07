@@ -3,7 +3,15 @@
   gap: 48px;
   .infos {
     display: flex;
+    align-items: center;
     gap: 50px;
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
     .imageProfilNavBar {
       width: 183px;
       height: 183px;
@@ -18,19 +26,29 @@
       font-weight: 600;
       line-height: normal;
     }
-    .button {
-      padding: 16px 32px;
-      gap: 10px;
-      border-radius: 8px;
-      background: #EC567C;
-      border: none;
-      color: #F4EDDE;
+    
+    .streamer-block__follow-button {
       font-family: Montserrat, sans-serif;
       font-size: 20px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
+      border-radius: 8px;
+      background: #EC567C;
+      padding: 16px 32px;
+      color: white;
+      border: none;
+      cursor: pointer;
     }
+    
+    .streamer-block__following-text {
+      border-radius: 8px;
+      background-color: #F4EDDE;
+      padding: 16px 32px;
+      color: #1E1E1E;
+      text-align: center;
+    }
+
   }
   .videos {
     display: grid;
