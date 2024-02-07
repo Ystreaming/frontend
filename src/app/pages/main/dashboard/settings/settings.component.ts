@@ -33,7 +33,7 @@ export class SettingsComponent implements OnInit {
 
   get imageUrl() {
     return this.channel && this.channel.image
-        ? `${environment.apiUrl}/uploads/${this.channel.image.filename}`
+        ? `${environment.apiUrl}${this.channel.image.path}`
         : null;
   }
 
