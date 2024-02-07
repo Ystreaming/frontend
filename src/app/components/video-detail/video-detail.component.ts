@@ -4,6 +4,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Subscription, forkJoin, of } from 'rxjs';
 import { CommentService } from 'src/app/services/comment.service';
+import { ListSubscriptionService } from 'src/app/services/list-subscription.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { VideoService } from 'src/app/services/video.service';
@@ -30,7 +31,8 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute, private videoService: VideoService,
     private commentService: CommentService, private localStorageService: LocalStorageService,
-    private sanitizer: DomSanitizer, private userService: UserService
+    private sanitizer: DomSanitizer, private userService: UserService,
+    private listSubscriptionService: ListSubscriptionService
   ) {}
 
   ngOnInit() {
@@ -96,6 +98,7 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
     let idChannel = this.videoData.idChannel._id;
     this.userService.createSub(idChannel).subscribe(() => {
       this.ngOnInit();
+      this.listSubscriptionService.refreshComponent();
     })
   }
 

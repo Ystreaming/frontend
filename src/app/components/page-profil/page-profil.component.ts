@@ -5,6 +5,7 @@ import { ChannelService } from 'src/app/services/channel.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { forkJoin, of } from 'rxjs';
+import { ListSubscriptionService } from 'src/app/services/list-subscription.service';
 
 @Component({
   selector: 'app-page-profil',
@@ -21,7 +22,8 @@ export class PageProfilComponent implements OnInit {
   constructor
   (
     private route: ActivatedRoute, private channelService: ChannelService,
-    private localStorageService: LocalStorageService, private userService: UserService
+    private localStorageService: LocalStorageService, private userService: UserService,
+    private listSubscriptionService: ListSubscriptionService
   ) { }
 
   ngOnInit() {
@@ -54,6 +56,7 @@ export class PageProfilComponent implements OnInit {
     let idChannel = this.channelData._id;
     this.userService.createSub(idChannel).subscribe(() => {
       this.ngOnInit();
+      this.listSubscriptionService.refreshComponent();
     })
   }
 }
