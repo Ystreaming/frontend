@@ -27,7 +27,7 @@ export class CreateChannelComponent {
 
     const channelData = {
       idUser: this.idUser,
-      idVideo: "",
+      idVideo: "dgzeufhuifaifif",
       name: this.name,
       description: this.description,
     };
