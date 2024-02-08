@@ -1,0 +1,27 @@
+<section class="container wrapper">
+    <article class="container__panel">
+        <div class="userInfo">
+            <img [src]="user?.profileImage ? (environment.apiUrl + user.profileImage.path) : 'assets/userProfil.png'" alt="image profil" class="imageProfiil">
+            <p>Votre chaîne</p>
+            <p class="profilName">{{ user?.username }}</p>
+        </div>
+        <div class="profile-tabs" *ngIf="channel && channel.length > 0">
+            <button [ngStyle]="{'color': selectedTab === 'dashboard' ? '#EC567C' : ''}" (click)="selectedTab = 'dashboard'">Tableau de bord</button>
+            <button [ngStyle]="{'color': selectedTab === 'content' ? '#EC567C' : ''}" (click)="selectedTab = 'content'">Contenu</button>
+            <button [ngStyle]="{'color': selectedTab === 'settings' ? '#EC567C' : ''}" (click)="selectedTab = 'settings'">Paramètres</button>
+            <button [ngStyle]="{'color': selectedTab === 'upload' ? '#EC567C' : ''}" (click)="selectedTab = 'upload'">Poster une vidéo</button>
+        </div>
+    </article>
+
+    <ng-container *ngIf="channel && channel.length > 0; else createChannel">
+        <div class="profile-content">
+            <app-statistics [channelIdFromParent]="channel[0]._id" *ngIf="selectedTab === 'dashboard'"></app-statistics>
+            <app-content [channelIdFromParent]="channel[0]._id" *ngIf="selectedTab === 'content'"></app-content>
+            <app-settings [channelIdFromParent]="channel[0]._id" *ngIf="selectedTab === 'settings'"></app-settings>
+            <app-upload-video [channelIdFromParent]="channel[0]._id" *ngIf="selectedTab === 'upload'"></app-upload-video>
+        </div>
+    </ng-container>
+    <ng-template #createChannel>
+        <app-create-channel [idUser]="user?._id" class="createChannel"></app-create-channel>
+    </ng-template>
+</section>

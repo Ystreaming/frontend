@@ -1,6 +1,5 @@
 import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { VideoService } from 'src/app/services/video.service';
 
 @Component({
@@ -21,7 +20,6 @@ export class RecommendedVideoComponent implements OnInit {
   loadVideos(): void {
     this.videoService.getRecommendation(6).subscribe(response => {
       this.videos = response;
-      console.log(response);
     });
   }
 }

@@ -24,7 +24,6 @@ export class VideosByCategoryPageComponent implements OnInit {
   loadVideos(limit: number) {
     this.videoService.getVideosByCategory(this.categoryId, limit).subscribe(response => {
       this.videos = response.videos;
-      console.log(response);
     });
   }
 }

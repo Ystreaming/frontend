@@ -1,13 +1,16 @@
 <section class="container">
     <div class="infos" *ngIf="channelData">
         <img [src]="environment.apiUrl + channelData.image.path" [alt]="channelData.username" class="imageProfilNavBar">
-        <div>
+        <div class="infos__text">
             <h3 class="h3">{{ channelData.name }}</h3>
             <div>
                 <p>{{ channelData.subNumber | number }} abonnés - {{ channelData.idVideos.length }} vidéos</p>
             </div>
             <p>{{ channelData.description }}</p>
-            <button class="button">S'abonner</button>
+            <button *ngIf="!isSub" (click)="subscribe()" class="streamer-block__follow-button">
+                S'abonner
+            </button>
+            <p *ngIf="isSub" class="streamer-block__following-text">Abonné</p>
         </div>
     </div>
     <div class="videos" *ngIf="channelData.idVideos.length">

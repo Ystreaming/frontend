@@ -22,7 +22,7 @@
             <h3 class="description-block__title">Description</h3>
             <div class="description-block__views-date">
                 <p class="description-block__views">{{ videoData.view }} vues</p>
-                <p class="description-block__date">{{ getTimeSince(videoData.time) }}</p>
+                <p class="description-block__date">{{ getTimeSince(videoData.createdAt) }}</p>
             </div>
             <p class="description-block__text">{{ videoData.description }}</p>
         </div>

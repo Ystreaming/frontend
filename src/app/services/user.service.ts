@@ -1,8 +1,9 @@
 import { IUser } from './../models/user.model';
+import { IChannel } from 'src/app/models/channel.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -46,5 +47,4 @@ export class UserService {
     let userId = this.localStorageService.getUserDetails();
     return this.http.patch(`${this.apiUrl}/sub/${userId}`, { subId: idChannel });
   }
-
 }

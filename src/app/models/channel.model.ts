@@ -1,8 +1,9 @@
 export interface IChannel {
-    id: string,
+    _id: string,
     name: string,
     image: string,
     description: string,
     idCategory: [number],
-    idVideos: [number]
+    idVideos: [number],
+    subNumber: number,
 }
