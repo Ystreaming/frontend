@@ -44,7 +44,6 @@ export class NavBarComponent implements OnInit {
   }
 
   toggleDropdown(): void {
-    console.log("clique sur l'image ok")
     this.showDropdown = !this.showDropdown;
   }
 

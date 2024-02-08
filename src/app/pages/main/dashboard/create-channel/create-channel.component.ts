@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 import { ChannelService } from 'src/app/services/channel.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class CreateChannelComponent {
   description: string = '';
   image: File | null = null;
 
-  constructor(private channelService: ChannelService) {}
+  constructor(private channelService: ChannelService, private notifierService: NotifierService) {}
 
   onFileSelected(event: any): void {
     this.image = event.target.files[0];
@@ -20,20 +21,19 @@ export class CreateChannelComponent {
 
   createChannel(): void {
     if (!this.name || !this.description || !this.image) {
-      alert('Le nom, la description et l\'image sont requis.');
+      this.notifierService.notify('error', 'Le nom, la description et l\'image sont requis.');
       return;
     }
 
     const channelData = {
       idUser: this.idUser,
-      idVideo: "65b7a4f15a039c8d19e6d868",
+      idVideo: "",
       name: this.name,
       description: this.description,
     };
 
     this.channelService.createChannel(channelData, this.image).subscribe({
       next: (response) => {
-        console.log(response);
         window.location.reload();
       },
       error: (error) => {

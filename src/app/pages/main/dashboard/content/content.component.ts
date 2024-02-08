@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { IVideo } from 'src/app/models/video.model';
 import {VideoService} from "../../../../services/video.service";
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-content',
@@ -19,9 +20,8 @@ export class ContentComponent implements OnInit {
   @Input() channelIdFromParent: string = '';
 
   constructor(
-      private channelService: ChannelService,
-      private videoService: VideoService,
-      private http: HttpClient
+      private channelService: ChannelService, private http: HttpClient,
+      private notifierService: NotifierService
   ) {}
 
   ngOnInit() {
@@ -33,8 +33,6 @@ export class ContentComponent implements OnInit {
       this.channelService.getChannelById(this.channelIdFromParent).subscribe(response => {
         this.channelData = response;
         this.videos = this.channelData.idVideos;
-        console.log('Données de la chaîne :', this.channelData);
-        console.log('Vidéos récupérées :', this.videos);
       });
     }
   }
@@ -62,19 +60,17 @@ export class ContentComponent implements OnInit {
       const url = `${this.environment.apiUrl}/videos/${this.videoToDelete}`;
       this.http.delete(url).subscribe({
         next: (response) => {
-          console.log('Vidéo supprimée avec succès', response);
           this.videos = this.videos.filter(video => video._id !== this.videoToDelete);
           this.videoToDelete = null;
         },
         error: (error) => {
-          console.error('Erreur lors de la suppression de la vidéo', error);
+          this.notifierService.notify('error', 'Erreur lors de la suppression de la vidéo');
         }
       });
     }
   }
 
   openUpdateVideo(video: IVideo) {
-    console.log('ID de la vidéo sélectionnée pour mise à jour : ', video._id);
     this.videoToUpdate = { ...video };
   }
 
@@ -84,8 +80,6 @@ export class ContentComponent implements OnInit {
 
       this.http.put(url, this.videoToUpdate).subscribe({
         next: (response) => {
-          console.log('Réponse de la mise à jour de la vidéo : ', response);
-
           this.videos = this.videos.map(video =>
               video._id === this.videoToUpdate?._id ? this.videoToUpdate : video
           );
@@ -93,7 +87,7 @@ export class ContentComponent implements OnInit {
           this.videoToUpdate = null;
         },
         error: (error) => {
-          console.error('Erreur lors de la mise à jour de la vidéo : ', error);
+          this.notifierService.notify('error', 'Erreur lors de la mise à jour de la vidéo');
         }
       });
     } else {

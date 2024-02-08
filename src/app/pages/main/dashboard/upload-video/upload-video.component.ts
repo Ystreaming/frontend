@@ -79,13 +79,8 @@ export class UploadVideoComponent implements OnInit {
     formData.append('idChannel', this.channelIdFromParent);
 
     this.videoService.createVideo(formData).subscribe((event: any) => {
-      if (event.type === HttpEventType.Sent) {
-        console.log('Request sent to server');
-      } else if (event.type === HttpEventType.UploadProgress) {
+      if (event.type === HttpEventType.UploadProgress) {
         this.uploadProgress = Math.round((100 * event.loaded) / event.total);
-        console.log(`Upload progress: ${this.uploadProgress}%`);
-      } else if (event.type === HttpEventType.Response) {
-        console.log('Réponse du service :', event);
       }
     });
   }

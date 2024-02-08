@@ -12,7 +12,6 @@ import { environment } from 'src/environments/environment';
 export class HomeVideosComponent implements OnInit {
   recommandations: any = [];
   mostviewed: any = [];
-  videosByViews: any = [];
   hoveredIndex: number | null = null;
   categories: any = [];
   environment = environment;

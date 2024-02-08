@@ -24,7 +24,6 @@ export class SettingsComponent implements OnInit {
       this.channelService.getChannelById(this.channelIdFromParent).subscribe({
         next: (data) => {
           this.channel = data;
-          console.log('Réponse du chargement du canal:', data);
         },
         error: (err) => console.error(err)
       });
@@ -38,8 +37,6 @@ export class SettingsComponent implements OnInit {
   }
 
   updateChannel(): void {
-    console.log("Tentative de mise à jour du canal", this.channel);
-
     if (this.channel && this.channel._id) {
       this.channelService.updateChannelById(this.channel._id, this.channel).subscribe({
         next: (data) => {
@@ -50,7 +47,7 @@ export class SettingsComponent implements OnInit {
         }
       });
     } else {
-      this.notifierService.notify('error', 'ID de la chaîne manquant ou chaîne non défini');
+      console.error('ID de la chaîne manquant ou chaîne non défini', 'error');
     }
   }
 }
