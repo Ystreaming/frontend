@@ -21,10 +21,12 @@ export class ListSubscriptionComponent implements OnInit {
   
   ngOnInit(): void {
     let userId = this.localStorageService.getUserDetails();
-    this.loadSubscribers(userId!);
-    this.listSubscriptionService.refreshListObservable.subscribe(() => {
-      this.ngOnInit();
-    });
+    if (userId) {
+      this.loadSubscribers(userId!);
+      this.listSubscriptionService.refreshListObservable.subscribe(() => {
+        this.ngOnInit();
+      });
+    }
   }
 
   loadSubscribers(userId: string) {
