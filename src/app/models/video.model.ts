@@ -6,7 +6,7 @@ export interface IVideo {
     dislike: number,
     description: string,
     language: string,
-    time: string,
+    time: number,
     img: string,
     url: string,
     urllocal: string,

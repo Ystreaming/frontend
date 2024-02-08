@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
+import { ChannelService } from 'src/app/services/channel.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,12 +14,13 @@ export class DashboardComponent implements OnInit {
   environment = environment;
   user: any;
   selectedTab: string = 'dashboard';
-  channelId: string | null = null;
+  channel: any;
 
   constructor(
       private userService: UserService,
       private localStorageService: LocalStorageService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private channelService: ChannelService
   ) {}
 
   ngOnInit() {
@@ -27,11 +29,12 @@ export class DashboardComponent implements OnInit {
     if (userId) {
       this.userService.getUserById(userId).subscribe(user => {
         this.user = user;
-      });
-      this.userService.getUserChannel(userId).subscribe(channelId => {
-        this.channelId = channelId;
+        this.channelService.getChannelByUserId(userId).subscribe(channel => {
+          this.channel = channel;
+        });
       });
     }
+
     this.route.queryParams.subscribe(params => {
       if (params['tab'] === 'settings') {
         this.selectedTab = 'settings';

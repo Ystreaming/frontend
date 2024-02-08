@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmit()" #videoForm="ngForm" enctype="multipart/form-data">
+    <label for="title">Titre de la vidéo :</label>
+    <input type="text" id="title" name="title" [(ngModel)]="videoData.title" required>
+
+    <label for="description">Description :</label>
+    <textarea id="description" name="description" [(ngModel)]="videoData.description" required></textarea>
+
+    <label for="thumbnail">Miniature de la vidéo :</label>
+    <img *ngIf="thumbnailPreview" [src]="thumbnailPreview" alt="Aperçu de la miniature" style="display:block; max-width: 200px; max-height: 200px;" />
+    <input type="file" id="thumbnail" name="img" (change)="handleThumbnailInput($event)" accept="image/*" required>
+
+    <label for="video">Fichier vidéo :</label>
+    <video *ngIf="videoPreview" [src]="videoPreview" controls style="display:block; max-width: 400px; max-height: 225px;">
+        Votre navigateur ne supporte pas l'élément <code>video</code>.
+    </video>
+    <input type="file" id="video" name="url" (change)="handleVideoInput($event)" accept="video/*" required>
+
+    <label for="category">Catégorie :</label>
+    <select id="category" name="category" [(ngModel)]="videoData.idCategory" required>
+        <option *ngFor="let category of categoryOptions" [value]="category._id">{{ category.name }}</option>
+    </select>
+
+    <button type="submit">Uploader la vidéo</button>
+</form>
+
+<div *ngIf="uploadProgress > 0">
+    Progression de l'upload : {{ uploadProgress }}%
+</div>
