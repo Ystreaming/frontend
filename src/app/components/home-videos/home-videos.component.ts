@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { CategoryService } from 'src/app/services/category.service';
 import { VideoService } from 'src/app/services/video.service';
 import { environment } from 'src/environments/environment';
@@ -19,24 +20,18 @@ export class HomeVideosComponent implements OnInit {
   constructor(private videoService: VideoService, private categoryService: CategoryService) {}
 
   ngOnInit(): void {
-    this.loadVideos(6);
-    this.loadCategories(3);
+    this.loadData(6, 3);
   }
 
-  loadVideos(limit: number) {
-    this.videoService.getRecommendation(limit).subscribe(response => {
-      this.recommandations = response;
+  loadData(videoLimit: number, categoryLimit: number) {
+    forkJoin({
+      recommandationsData: this.videoService.getRecommendation(videoLimit),
+      mostViewedData: this.videoService.getMostViewed(videoLimit),
+      categoriesData: this.categoryService.getAllCategories(categoryLimit)
+    }).subscribe(({ recommandationsData, mostViewedData, categoriesData }) => {
+      this.recommandations = recommandationsData;
+      this.mostviewed = mostViewedData;
+      this.categories = categoriesData.categories;
     });
-
-    this.videoService.getMostViewed(limit).subscribe(response => {
-      this.mostviewed = response;
-    });
-  }
-
-  loadCategories(limit: number) {
-    this.categoryService.getAllCategories(limit).subscribe(response => {
-      console.log(response);
-      this.categories = response.categories;
-    })
   }
 }
