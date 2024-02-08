@@ -1,8 +1,7 @@
-import { IComment } from './../../models/comment.model';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import {ActivatedRoute, Router} from '@angular/router';
-import { Subscription, forkJoin, of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { forkJoin, of } from 'rxjs';
 import { CommentService } from 'src/app/services/comment.service';
 import { ListSubscriptionService } from 'src/app/services/list-subscription.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';

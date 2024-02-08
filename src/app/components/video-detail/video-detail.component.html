@@ -38,7 +38,7 @@
                 <div *ngIf="commentData !== null">
                     <div *ngFor="let comment of commentData.comments" class="comments-block__comment">
                         <div class="comment">
-                            <img [src]="environment.apiUrl + comment.idUser.profileImage.path" alt="Image de profil de l'utilisateur" class="comment__image">
+                            <img [src]="comment.idUser.profileImage ? (environment.apiUrl + comment.idUser.profileImage.path) : 'assets/userProfil.png'" alt="Image de profil de l'utilisateur" class="comment__image">
                             <div class="comment__info">
                                 <p class="comment__username">{{ comment.idUser.username }}</p>
                                 <p class="comment__date">{{ getTimeSince(comment.createdAt) }}</p>
